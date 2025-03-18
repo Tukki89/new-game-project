@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://8hygukf60ukg"]
+
+[ext_resource type="Script" path="res://script/camp_entry.gd" id="1_wgun5"]
+[ext_resource type="Texture2D" uid="uid://bgtvol82oifdm" path="res://2d_rpg_sprites/Sprites/Player/Asset Pack 1/Grassland Tileset.png" id="2_2186q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_36pg2"]
+size = Vector2(112, 35)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dhl8l"]
+
+[node name="Camp_entry" type="Area2D"]
+y_sort_enabled = true
+position = Vector2(403, 218)
+script = ExtResource("1_wgun5")
+
+[node name="Entry" type="Sprite2D" parent="."]
+texture = ExtResource("2_2186q")
+region_enabled = true
+region_rect = Rect2(364.603, 134.193, 87.9038, 31.6145)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_36pg2")
+
+[node name="checkpoint" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="checkpoint"]
+position = Vector2(-2, 35)
+shape = SubResource("CircleShape2D_dhl8l")
+debug_color = Color(0.939708, 1.01075e-05, 0.618201, 0.42)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="checkpoint" to="." method="_on_checkpoint_body_entered"]
