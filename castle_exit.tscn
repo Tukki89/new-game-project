@@ -1701,4 +1701,4 @@ position = Vector2(575, 627)
 rotation = -3.12339
 
 [node name="Player" parent="." instance=ExtResource("5_p1xh8")]
-position = Vector2(575, 374)
+position = Vector2(569, 422)
