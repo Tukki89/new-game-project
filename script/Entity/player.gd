@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @onready var anim_tree = $AnimationTree
 @onready var anim_state = anim_tree.get("parameters/playback")
+@onready var sprite = $Sprite2D  # Change to $AnimatedSprite2D if needed
 
 enum player_states {MOVE, SWORD}
 var current_states = player_states.MOVE
@@ -18,32 +19,36 @@ func _physics_process(delta):
 			input_move()
 		player_states.SWORD:
 			sword()
-	
+
+	move_and_slide()
+
 func input_move():
 	input_movement = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	
 	if input_movement != Vector2.ZERO:
-		anim_tree.set("parameters/Idle/blend_position" , input_movement)
-		anim_tree.set("parameters/Move/blend_position" , input_movement)
-		anim_tree.set("parameters/Sword/blend_position" , input_movement)
+		anim_tree.set("parameters/Idle/blend_position", input_movement)
+		anim_tree.set("parameters/Move/blend_position", input_movement)
+		anim_tree.set("parameters/Sword/blend_position", input_movement)
 		anim_state.travel("Move")
 		velocity = input_movement * speed
-	if input_movement == Vector2.ZERO:
-		anim_state.travel("Idle")	
+
+		# Flip sprite only based on left/right movement
+		if input_movement.x < 0:
+			sprite.flip_h = true  # Face left
+		elif input_movement.x > 0:
+			sprite.flip_h = false  # Face right
+			
+	else:
+		anim_state.travel("Idle")    
 		velocity = Vector2.ZERO
 
 	if Input.is_action_just_pressed("ui_sword"):
 		current_states = player_states.SWORD
 
-	move_and_slide()
-
-
 func sword():
-	anim_state.travel("Sword") 
-	
+	anim_state.travel("Sword")
 
 func on_states_reset():
 	current_states = player_states.MOVE
-
 
  
