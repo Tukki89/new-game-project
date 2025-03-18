@@ -1,7 +1,7 @@
 [gd_scene load_steps=42 format=3 uid="uid://brin0gve4qj2j"]
 
 [ext_resource type="Script" path="res://script/Entity/player.gd" id="1_n7ypk"]
-[ext_resource type="Texture2D" uid="uid://dmg1l7e1sgaiy" path="res://2d_rpg_sprites/Sprites/Player/Elite Swordsman Sprite Sheet.png" id="2_dvrgt"]
+[ext_resource type="Texture2D" uid="uid://cc7rj7sth7iqp" path="res://2d_rpg_sprites/Sprites/Player/Elite Swordsman Sprite Sheet.png" id="2_dvrgt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1gj4n"]
 radius = 6.0
