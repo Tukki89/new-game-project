@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://g03doaop14li"]
+
+[ext_resource type="Script" path="res://dusktocamp_2d.gd" id="1_jcw6g"]
+[ext_resource type="Texture2D" uid="uid://bgtvol82oifdm" path="res://2d_rpg_sprites/Sprites/Player/Asset Pack 1/Grassland Tileset.png" id="2_lfpyx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6dqnm"]
+size = Vector2(141, 41)
+
+[node name="Area2D" type="Area2D"]
+y_sort_enabled = true
+script = ExtResource("1_jcw6g")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(338.25, 182.75)
+scale = Vector2(1.31818, 1.25862)
+texture = ExtResource("2_lfpyx")
+region_enabled = true
+region_rect = Rect2(372, 138, 77, 29)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+y_sort_enabled = true
+position = Vector2(335.5, 182.5)
+shape = SubResource("RectangleShape2D_6dqnm")
+debug_color = Color(0.891661, 0.228748, 0.578951, 0.42)
+
+[node name="spawn_point" type="Marker2D" parent="."]
+y_sort_enabled = true
+position = Vector2(338, 218)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

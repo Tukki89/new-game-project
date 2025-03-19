@@ -1,11 +1,13 @@
-[gd_scene load_steps=6 format=4 uid="uid://pnyii33h8ts3"]
+[gd_scene load_steps=8 format=4 uid="uid://ppmp14wuufys"]
 
-[ext_resource type="Script" path="res://duskwither_hollow.gd" id="1_1nxf2"]
-[ext_resource type="Texture2D" uid="uid://bgtvol82oifdm" path="res://2d_rpg_sprites/Sprites/Player/Asset Pack 1/Grassland Tileset.png" id="1_px5sa"]
-[ext_resource type="PackedScene" uid="uid://g03doaop14li" path="res://dusktocampportal.tscn" id="3_mmiqa"]
+[ext_resource type="Script" path="res://duskwither_hollow.gd" id="1_pagbn"]
+[ext_resource type="Texture2D" uid="uid://bgtvol82oifdm" path="res://2d_rpg_sprites/Sprites/Player/Asset Pack 1/Grassland Tileset.png" id="2_3k4w1"]
+[ext_resource type="PackedScene" uid="uid://g03doaop14li" path="res://dusktocampportal.tscn" id="3_uxt7b"]
+[ext_resource type="PackedScene" uid="uid://brin0gve4qj2j" path="res://scenes/Player/player.tscn" id="4_yfrcu"]
+[ext_resource type="PackedScene" uid="uid://8n056yf0dhgh" path="res://dh_ef.tscn" id="5_eq6ks"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y118a"]
-texture = ExtResource("1_px5sa")
+texture = ExtResource("2_3k4w1")
 texture_region_size = Vector2i(24, 24)
 0:0/0 = 0
 1:0/0 = 0
@@ -586,7 +588,7 @@ sources/0 = SubResource("TileSetAtlasSource_y118a")
 
 [node name="Node2D" type="Node2D"]
 y_sort_enabled = true
-script = ExtResource("1_1nxf2")
+script = ExtResource("1_pagbn")
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
@@ -641,7 +643,15 @@ use_parent_material = true
 tile_map_data = PackedByteArray("AAAQAAYAAAAPAAQAAAAQAAMAAAAQAAUAAAAGAAoAAAARAAYAAAABAAkAAAASAAUAAAABAAIAAAARAAUAAAALAAIAAAAPAAUAAAANAAMAAAAQAAYAAAAQAAAAAAAPAAUAAAAeAA8AAAARAAUAAAAcAA8AAAAQAAUAAAAaABAAAAAPAAYAAAAVAA4AAAAPAAUAAAApAA0AAAASAAUAAAAmAA0AAAAQAAQAAAAhAAwAAAAPAAUAAAAoAAcAAAARAAUAAAAlAAoAAAAPAAQAAAAjAAoAAAARAAYAAAAYAAQAAAAQAAUAAAAXAAQAAAAPAAQAAAAUAAEAAAAQAAYAAAAdAAUAAAASAAUAAAAcAAIAAAAPAAUAAAAcAAMAAAAPAAYAAAAdAAIAAAAQAAUAAAAdAAMAAAAQAAYAAAAKAAgAAAARAAQAAAAfAAgAAAAGAAQAAAAgAAgAAAAHAAQAAAAhAAgAAAAHAAQAAAAiAAgAAAAIAAQAAAAfAAkAAAAGAAYAAAAgAAoAAAAGAAYAAAAgAAkAAAAIAAEAAAAhAAkAAAAIAAEAAAAhAAoAAAAHAAYAAAAiAAkAAAAIAAUAAAAiAAoAAAAIAAYAAAAkAAkAAAANAAcAAAAgAA8AAAAGAAYAAAAgAA4AAAAGAAQAAAAhAA4AAAAIAAQAAAAhAA8AAAAIAAYAAAAdABgAAAAIAAcAAAAdABkAAAAIAAgAAAAeABgAAAAJAAcAAAAeABkAAAAJAAgAAAAeABcAAAAMAAYAAAAdABoAAAAOAAYAAAAbABEAAAARABQAAAAbABIAAAARABUAAAAcABEAAAASABQAAAAcABIAAAASABUAAAAUAAcAAAARABQAAAAUAAgAAAARABUAAAAVAAcAAAASABQAAAAVAAgAAAASABUAAAAdAAoAAAARABQAAAAdAAsAAAARABUAAAAeAAoAAAASABQAAAAeAAsAAAASABUAAAAdAAwAAAAJABEAAAA=")
 tile_set = SubResource("TileSet_pqyrq")
 
-[node name="Area2D" parent="." instance=ExtResource("3_mmiqa")]
+[node name="Area2D" parent="." instance=ExtResource("3_uxt7b")]
 z_index = 1
-position = Vector2(-170, 747)
-rotation = -1.54816
+position = Vector2(-136, 771)
+rotation = -1.6488
+
+[node name="Player" parent="." instance=ExtResource("4_yfrcu")]
+z_index = 1
+position = Vector2(1041, 113)
+
+[node name="DH>EF" parent="." instance=ExtResource("5_eq6ks")]
+position = Vector2(2131, -1915)
+rotation = 1.54482

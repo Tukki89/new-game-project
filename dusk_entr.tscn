@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://durvmitribjlm"]
+
+[ext_resource type="Script" path="res://dusk_entr.gd" id="1_y5guv"]
+[ext_resource type="Texture2D" uid="uid://bgtvol82oifdm" path="res://2d_rpg_sprites/Sprites/Player/Asset Pack 1/Grassland Tileset.png" id="2_neely"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p82uj"]
+size = Vector2(102, 36.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yi1uo"]
+
+[node name="DuskEntr" type="Area2D"]
+position = Vector2(503, 263)
+script = ExtResource("1_y5guv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(6.75, 0)
+scale = Vector2(1.15517, 1)
+texture = ExtResource("2_neely")
+region_enabled = true
+region_rect = Rect2(365.258, 136.383, 87.5183, 30.4579)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(9, -1)
+scale = Vector2(1.15517, 1)
+shape = SubResource("RectangleShape2D_p82uj")
+
+[node name="Area2D" type="Area2D" parent="."]
+y_sort_enabled = true
+
+[node name="checkpoint2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(8, 32)
+shape = SubResource("CircleShape2D_yi1uo")
+debug_color = Color(0.85455, 0.286127, 0.594416, 0.42)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

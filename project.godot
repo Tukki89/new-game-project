@@ -15,6 +15,10 @@ run/main_scene="res://scenes/Level/level_1.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+NavigationManager="*res://scenes/Level/navigation_manager.gd"
+
 [display]
 
 window/stretch/mode="viewport"
