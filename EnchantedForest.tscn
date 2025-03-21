@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=4 uid="uid://di1y673h66wye"]
+[gd_scene load_steps=11 format=4 uid="uid://di1y673h66wye"]
 
 [ext_resource type="Texture2D" uid="uid://drjyd5iqpjsu5" path="res://2d_rpg_sprites/Sprites/Player/Asset Pack 2/Asset Pack 3/Poison Forest.png" id="1_ckg7a"]
 [ext_resource type="Texture2D" uid="uid://4nd4yl6m7cva" path="res://2d_rpg_sprites/Sprites/Player/Asset Pack 2/Asset Pack 3/poison tree wall.png" id="2_c17yc"]
 [ext_resource type="Texture2D" uid="uid://bgtvol82oifdm" path="res://2d_rpg_sprites/Sprites/Player/Asset Pack 1/Grassland Tileset.png" id="3_6p687"]
 [ext_resource type="PackedScene" uid="uid://brin0gve4qj2j" path="res://scenes/Player/player.tscn" id="4_ecd66"]
 [ext_resource type="PackedScene" uid="uid://rm8a7f5qxqxq" path="res://EF_to_DH.tscn" id="5_syqll"]
+[ext_resource type="PackedScene" uid="uid://6wmajq8yloqq" path="res://e_fto_lk.tscn" id="6_mn44e"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0ngmu"]
 texture = ExtResource("1_ckg7a")
@@ -969,10 +970,7 @@ sources/1 = SubResource("TileSetAtlasSource_yc8qm")
 sources/2 = SubResource("TileSetAtlasSource_mi50e")
 
 [node name="Node2D" type="Node2D"]
-
-[node name="Player" parent="." instance=ExtResource("4_ecd66")]
-z_index = 1
-position = Vector2(175, 335)
+position = Vector2(12, -3)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_ooghn")
@@ -1035,3 +1033,9 @@ tile_set = SubResource("TileSet_ooghn")
 [node name="DH>EF" parent="." instance=ExtResource("5_syqll")]
 position = Vector2(38, 427)
 rotation = 1.57649
+
+[node name="Player" parent="." instance=ExtResource("4_ecd66")]
+position = Vector2(722, 42)
+
+[node name="EFtoLK" parent="." instance=ExtResource("6_mn44e")]
+position = Vector2(724, 15)
