@@ -1738,4 +1738,5 @@ position = Vector2(553, 150)
 rotation = 1.61003
 
 [node name="npc_guard" parent="." instance=ExtResource("9_mmkcp")]
+z_index = 1
 position = Vector2(-407, 39)

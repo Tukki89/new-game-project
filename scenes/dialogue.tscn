@@ -4,19 +4,21 @@
 [ext_resource type="Texture2D" uid="uid://bgix1ydbhcy7w" path="res://scenes/Interactables/Slime pack/UiCozyFree.png" id="1_mb5x8"]
 
 [node name="Dialogue" type="Control"]
+z_index = 1
+y_sort_enabled = true
 layout_mode = 3
 anchors_preset = 0
+offset_top = 8.0
 offset_right = 40.0
-offset_bottom = 40.0
+offset_bottom = 48.0
 script = ExtResource("1_13tmd")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 0
-offset_left = 304.0
-offset_top = 176.0
-offset_right = 408.0
-offset_bottom = 232.0
-scale = Vector2(4, 4)
+offset_left = -80.0
+offset_top = -64.0
+offset_bottom = -40.0
+scale = Vector2(2, 2)
 texture = ExtResource("1_mb5x8")
 region_rect = Rect2(8, 167, 87, 81)
 metadata/_edit_group_ = true
@@ -24,17 +26,17 @@ metadata/_edit_group_ = true
 [node name="Name" type="RichTextLabel" parent="NinePatchRect"]
 layout_mode = 0
 offset_left = 8.0
-offset_top = 8.0
+offset_top = 4.0
 offset_right = 128.0
-offset_bottom = 48.0
-scale = Vector2(0.4, 0.4)
+offset_bottom = 44.0
+scale = Vector2(0.2, 0.2)
 text = "Giamil"
 
 [node name="Text" type="RichTextLabel" parent="NinePatchRect"]
 layout_mode = 0
 offset_left = 8.0
-offset_top = 16.0
-offset_right = 228.0
-offset_bottom = 96.0
-scale = Vector2(0.4, 0.4)
+offset_top = 8.0
+offset_right = 328.0
+offset_bottom = 68.0
+scale = Vector2(0.2, 0.2)
 text = "Lorem Ipsum"
