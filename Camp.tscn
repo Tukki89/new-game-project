@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://dcmcfnvw2xbh1"]
+[gd_scene load_steps=15 format=4 uid="uid://dcmcfnvw2xbh1"]
 
 [ext_resource type="Script" path="res://script/level script/camp.gd" id="1_f4pp4"]
 [ext_resource type="Texture2D" uid="uid://bgtvol82oifdm" path="res://2d_rpg_sprites/Sprites/Player/Asset Pack 1/Grassland Tileset.png" id="1_xkln1"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bqmkskahi0qc8" path="res://scenes/Interactables/crate.tscn" id="5_akifj"]
 [ext_resource type="PackedScene" uid="uid://cag2tx5w8tr7n" path="res://scenes/Interactables/camp_tocastle.tscn" id="6_00fon"]
 [ext_resource type="PackedScene" uid="uid://durvmitribjlm" path="res://dusk_entr.tscn" id="8_ivomj"]
+[ext_resource type="PackedScene" uid="uid://bsbtlfcshp1da" path="res://scenes/NPC/npc.tscn" id="9_mmkcp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_px84d"]
 texture = ExtResource("1_xkln1")
@@ -1735,3 +1736,6 @@ rotation = -1.57053
 [node name="DuskEntr" parent="." instance=ExtResource("8_ivomj")]
 position = Vector2(553, 150)
 rotation = 1.61003
+
+[node name="npc_guard" parent="." instance=ExtResource("9_mmkcp")]
+position = Vector2(-407, 39)

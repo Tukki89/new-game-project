@@ -4,8 +4,8 @@ extends CharacterBody2D
 @onready var anim_state = anim_tree.get("parameters/playback")
 @onready var sprite = $Sprite2D  # Change to $AnimatedSprite2D if needed
 
-enum player_states {MOVE, SWORD}
-var current_states = player_states.MOVE
+enum PlayerStates { MOVE, SWORD }
+var current_state = PlayerStates.MOVE
 var speed = 70
 var input_movement = Vector2.ZERO
 var health = Player_data.player_health
@@ -14,41 +14,44 @@ func _ready():
 	print(health)
 
 func _physics_process(delta):
-	match current_states:
-		player_states.MOVE:
+	match current_state:
+		PlayerStates.MOVE:
 			input_move()
-		player_states.SWORD:
+		PlayerStates.SWORD:
 			sword()
 
 	move_and_slide()
 
 func input_move():
 	input_movement = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	
+
 	if input_movement != Vector2.ZERO:
-		anim_tree.set("parameters/Idle/blend_position", input_movement)
-		anim_tree.set("parameters/Move/blend_position", input_movement)
-		anim_tree.set("parameters/Sword/blend_position", input_movement)
+		update_animation_blend(input_movement)
 		anim_state.travel("Move")
 		velocity = input_movement * speed
-
-		# Flip sprite only based on left/right movement
-		if input_movement.x < 0:
-			sprite.flip_h = true  # Face left
-		elif input_movement.x > 0:
-			sprite.flip_h = false  # Face right
-			
+		flip_sprite(input_movement.x)
 	else:
 		anim_state.travel("Idle")    
 		velocity = Vector2.ZERO
 
 	if Input.is_action_just_pressed("ui_sword"):
-		current_states = player_states.SWORD
+		current_state = PlayerStates.SWORD
 
 func sword():
 	anim_state.travel("Sword")
+	# Wait for the animation to finish before resetting state
+	$AnimationTree.connect("animation_finished", Callable(self, "on_states_reset"), CONNECT_ONE_SHOT)
 
 func on_states_reset():
-	current_states = player_states.MOVE
+	current_state = PlayerStates.MOVE
 
- 
+func update_animation_blend(direction: Vector2):
+	anim_tree.set("parameters/Idle/blend_position", direction)
+	anim_tree.set("parameters/Move/blend_position", direction)
+	anim_tree.set("parameters/Sword/blend_position", direction)
+
+func flip_sprite(direction_x: float):
+	if direction_x < 0:
+		sprite.flip_h = true  # Face left
+	elif direction_x > 0:
+		sprite.flip_h = false  # Face right

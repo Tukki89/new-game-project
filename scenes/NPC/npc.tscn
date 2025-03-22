@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=3 uid="uid://bsbtlfcshp1da"]
+
+[ext_resource type="Texture2D" uid="uid://c8og7goekghqd" path="res://2d_rpg_sprites/Sprites/Player/Asset Pack 2/Wall Guards(48x64).png" id="1_chmcc"]
+[ext_resource type="Script" path="res://scenes/NPC/npc_guard.gd" id="1_sle7q"]
+[ext_resource type="PackedScene" uid="uid://dkohd3vxi3g48" path="res://scenes/dialogue.tscn" id="3_enl1l"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6tqvh"]
+atlas = ExtResource("1_chmcc")
+region = Rect2(0, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xhyyd"]
+atlas = ExtResource("1_chmcc")
+region = Rect2(48, 0, 48, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_whdyc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6tqvh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xhyyd")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ey4t5"]
+radius = 8.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6ld6t"]
+radius = 40.0
+
+[node name="npc_guard" type="CharacterBody2D"]
+script = ExtResource("1_sle7q")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_whdyc")
+animation = &"Idle"
+frame_progress = 0.884983
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 16)
+shape = SubResource("CircleShape2D_ey4t5")
+
+[node name="chat_detection_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="chat_detection_area"]
+position = Vector2(0, 16)
+shape = SubResource("CircleShape2D_6ld6t")
+debug_color = Color(0.963663, 0.0266239, 0.481737, 0.42)
+
+[node name="Dialogue" parent="." instance=ExtResource("3_enl1l")]
+offset_left = -24.0
+offset_top = -8.0
+offset_right = 16.0
+offset_bottom = 32.0
+
+[connection signal="body_entered" from="chat_detection_area" to="." method="_on_chat_detection_area_body_entered"]
+[connection signal="body_exited" from="chat_detection_area" to="." method="_on_chat_detection_area_body_exited"]

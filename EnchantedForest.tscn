@@ -1,11 +1,17 @@
-[gd_scene load_steps=11 format=4 uid="uid://di1y673h66wye"]
+[gd_scene load_steps=17 format=4 uid="uid://di1y673h66wye"]
 
 [ext_resource type="Texture2D" uid="uid://drjyd5iqpjsu5" path="res://2d_rpg_sprites/Sprites/Player/Asset Pack 2/Asset Pack 3/Poison Forest.png" id="1_ckg7a"]
 [ext_resource type="Texture2D" uid="uid://4nd4yl6m7cva" path="res://2d_rpg_sprites/Sprites/Player/Asset Pack 2/Asset Pack 3/poison tree wall.png" id="2_c17yc"]
 [ext_resource type="Texture2D" uid="uid://bgtvol82oifdm" path="res://2d_rpg_sprites/Sprites/Player/Asset Pack 1/Grassland Tileset.png" id="3_6p687"]
+[ext_resource type="PackedScene" uid="uid://bqmkskahi0qc8" path="res://scenes/Interactables/crate.tscn" id="4_ba8dm"]
 [ext_resource type="PackedScene" uid="uid://brin0gve4qj2j" path="res://scenes/Player/player.tscn" id="4_ecd66"]
 [ext_resource type="PackedScene" uid="uid://rm8a7f5qxqxq" path="res://EF_to_DH.tscn" id="5_syqll"]
 [ext_resource type="PackedScene" uid="uid://6wmajq8yloqq" path="res://e_fto_lk.tscn" id="6_mn44e"]
+[ext_resource type="PackedScene" uid="uid://b7y365xrt60m2" path="res://scenes/Level/slime.tscn" id="7_ebo3m"]
+[ext_resource type="PackedScene" uid="uid://b8cdxr0pu8iec" path="res://scenes/Interactables/blue_slime.tscn" id="8_08bij"]
+[ext_resource type="PackedScene" uid="uid://cwm6qvwd5gqn2" path="res://scenes/Level/cat.tscn" id="10_oyrfn"]
+[ext_resource type="PackedScene" uid="uid://btls2wdxuwr6" path="res://scenes/Level/treant.tscn" id="11_wf4gx"]
+[ext_resource type="PackedScene" uid="uid://b03luxi5mt7vg" path="res://scenes/Level/yellow_slime.tscn" id="12_ljv8o"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0ngmu"]
 texture = ExtResource("1_ckg7a")
@@ -687,6 +693,7 @@ texture_region_size = Vector2i(24, 24)
 3:7/0 = 0
 4:7/0 = 0
 5:7/0 = 0
+5:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-12, -12, 12, -12, 12, 12, -12, 12)
 6:7/0 = 0
 7:7/0 = 0
 8:7/0 = 0
@@ -706,6 +713,7 @@ texture_region_size = Vector2i(24, 24)
 3:8/0 = 0
 4:8/0 = 0
 5:8/0 = 0
+5:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-12, -12, 12, -12, 12, 12, -12, 12)
 6:8/0 = 0
 7:8/0 = 0
 8:8/0 = 0
@@ -725,6 +733,7 @@ texture_region_size = Vector2i(24, 24)
 3:9/0 = 0
 4:9/0 = 0
 5:9/0 = 0
+5:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-12, -12, 12, -12, 12, 12, -12, 12)
 6:9/0 = 0
 7:9/0 = 0
 8:9/0 = 0
@@ -784,8 +793,11 @@ texture_region_size = Vector2i(24, 24)
 1:12/0 = 0
 2:12/0 = 0
 3:12/0 = 0
+3:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(-12, -12, 12, -12, 12, 12, -12, 12)
 4:12/0 = 0
+4:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(-12, -12, 12, -12, 12, 12, -12, 12)
 5:12/0 = 0
+5:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(-12, -12, 12, -12, 12, 12, -12, 12)
 6:12/0 = 0
 7:12/0 = 0
 8:12/0 = 0
@@ -964,7 +976,8 @@ texture_region_size = Vector2i(24, 24)
 
 [sub_resource type="TileSet" id="TileSet_ooghn"]
 tile_size = Vector2i(24, 24)
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 16
+physics_layer_0/collision_mask = 33
 sources/0 = SubResource("TileSetAtlasSource_0ngmu")
 sources/1 = SubResource("TileSetAtlasSource_yc8qm")
 sources/2 = SubResource("TileSetAtlasSource_mi50e")
@@ -1030,6 +1043,9 @@ use_parent_material = true
 tile_map_data = PackedByteArray("AAACAAoAAAAPAAsAAAACAAsAAAAPAAwAAAACAAwAAAAPAA0AAAACAA0AAAAPAA4AAAACAA4AAAAPAA8AAAADAAoAAAAQAAsAAAADAAsAAAAQAAwAAAADAAwAAAAQAA0AAAADAA0AAAAQAA4AAAADAA4AAAAQAA8AAAAEAAoAAAARAAsAAAAEAAsAAAARAAwAAAAEAAwAAAARAA0AAAAAAA4AAAAPAAkAAAAAAA8AAAAPAAoAAAABAA4AAAAQAAkAAAABAA8AAAAQAAoAAAARAAkAAAAIAAsAAAARAAoAAAAIAAwAAAARAAsAAAAIAA0AAAARAAwAAAAIAA4AAAARAA0AAAAIAA8AAAASAAkAAAAJAAsAAAASAAoAAAAJAAwAAAASAAsAAAAJAA0AAAASAAwAAAAJAA4AAAASAA0AAAAJAA8AAAATAAkAAAAKAAsAAAATAAoAAAAKAAwAAAATAAsAAAAKAA0AAAATAAwAAAAKAA4AAAATAA0AAAAKAA8AAAAUAAkAAAALAAsAAAAUAAoAAAALAAwAAAAUAAsAAAALAA0AAAAUAAwAAAALAA4AAAAUAA0AAAALAA8AAAALAAwAAAARAAkAAAALAA0AAAARAAoAAAAWABEAAAARAAkAAAAWABIAAAARAAoAAAAbAAkAAAAPAAsAAAAbAAoAAAAPAAwAAAAbAAsAAAAPAA0AAAAbAAwAAAAPAA4AAAAbAA0AAAAPAA8AAAAcAAkAAAAQAAsAAAAcAAoAAAAQAAwAAAAcAAsAAAAQAA0AAAAcAAwAAAAQAA4AAAAcAA0AAAAQAA8AAAAdAAkAAAARAAsAAAAdAAoAAAARAAwAAAAdAAsAAAARAA0AAAAkAAQAAAAMAAsAAAAkAAUAAAAMAAwAAAAkAAYAAAAMAA0AAAAkAAgAAAAMAA8AAAAlAAQAAAANAAsAAAAlAAUAAAANAAwAAAAlAAYAAAANAA0AAAAlAAcAAAANAA4AAAAlAAgAAAANAA8AAAAmAAQAAAAOAAsAAAAmAAUAAAAOAAwAAAAmAAYAAAAOAA0AAAAmAAcAAAAOAA4AAAAmAAgAAAAOAA8AAAAHABUAAAAPAAsAAAAHABYAAAAPAAwAAAAHABcAAAAPAA0AAAAHABgAAAAPAA4AAAAHABkAAAAPAA8AAAAIABUAAAAQAAsAAAAIABYAAAAQAAwAAAAIABcAAAAQAA0AAAAIABgAAAAQAA4AAAAIABkAAAAQAA8AAAAJABUAAAARAAsAAAAJABYAAAARAAwAAAAJABcAAAARAA0AAAAJABkAAAARAA8AAAAjABIAAAAPAAsAABAiABIAAAAQAAsAABAhABIAAAARAAsAABAjABMAAAAPAAwAABAiABMAAAAQAAwAABAhABMAAAARAAwAABAjABQAAAAPAA0AABAiABQAAAAQAA0AABAhABQAAAARAA0AABAjABUAAAAPAA4AABAiABUAAAAQAA4AABAjABYAAAAPAA8AABAiABYAAAAQAA8AABAhABYAAAARAA8AABAvAAYAAAARAAsAAAAuAAYAAAAQAAsAAAAtAAYAAAAPAAsAAAAvAAcAAAARAAwAAAAuAAcAAAAQAAwAAAAtAAcAAAAPAAwAAAAvAAgAAAARAA0AAAAuAAgAAAAQAA0AAAAtAAgAAAAPAA0AAAAuAAkAAAAQAA4AAAAtAAkAAAAPAA4AAAAuAAoAAAAQAA8AAAAtAAoAAAAPAA8AAAAZABMAAAAPAAkAAAAZABQAAAAPAAoAAAAaABMAAAAQAAkAAAAaABQAAAAQAAoAAAAeABEAAAARAAkAAAAeABIAAAARAAoAAAAgAA0AAAARAAkAAAAgAA4AAAARAAoAAAADAA8AAgAFABUAAAAgAAYAAgAFABUAAAAgAP3/AAAIAAsAAAAgAP7/AAAIAAwAAAAgAP//AAAIAA0AAAAgAAAAAAAIAA4AAAAgAAEAAAAIAA8AAAAhAP3/AAAJAAsAAAAhAP7/AAAJAAwAAAAhAP//AAAJAA0AAAAhAAAAAAAJAA4AAAAhAAEAAAAJAA8AAAAiAP3/AAAKAAsAAAAiAP7/AAAKAAwAAAAiAP//AAAKAA0AAAAiAAAAAAAKAA4AAAAiAAEAAAAKAA8AAAAjAP3/AAALAAsAAAAjAP7/AAALAAwAAAAjAP//AAALAA0AAAAjAAAAAAALAA4AAAAjAAEAAAALAA8AAAAtAP7/AAAMAAsAAAAtAP//AAAMAAwAAAAtAAAAAAAMAA0AAAAtAAIAAAAMAA8AAAAuAP7/AAANAAsAAAAuAP//AAANAAwAAAAuAAAAAAANAA0AAAAuAAEAAAANAA4AAAAuAAIAAAANAA8AAAAvAP7/AAAOAAsAAAAvAP//AAAOAAwAAAAvAAAAAAAOAA0AAAAvAAEAAAAOAA4AAAAvAAIAAAAOAA8AAAAdAA0AAAARAA8AAAAEAA4AAAARAA8AAAA=")
 tile_set = SubResource("TileSet_ooghn")
 
+[node name="crate" parent="TileMap" instance=ExtResource("4_ba8dm")]
+position = Vector2(684, 91)
+
 [node name="DH>EF" parent="." instance=ExtResource("5_syqll")]
 position = Vector2(38, 427)
 rotation = 1.57649
@@ -1039,3 +1055,18 @@ position = Vector2(722, 42)
 
 [node name="EFtoLK" parent="." instance=ExtResource("6_mn44e")]
 position = Vector2(724, 15)
+
+[node name="slime" parent="." instance=ExtResource("7_ebo3m")]
+position = Vector2(708, 139)
+
+[node name="Blue_Slime" parent="." instance=ExtResource("8_08bij")]
+position = Vector2(804, 211)
+
+[node name="Cat" parent="." instance=ExtResource("10_oyrfn")]
+position = Vector2(692, 59)
+
+[node name="Treant" parent="." instance=ExtResource("11_wf4gx")]
+position = Vector2(748, 83)
+
+[node name="yellow_slime" parent="." instance=ExtResource("12_ljv8o")]
+position = Vector2(652, 243)

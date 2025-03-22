@@ -1,0 +1,117 @@
+[gd_scene load_steps=17 format=3 uid="uid://btls2wdxuwr6"]
+
+[ext_resource type="Script" path="res://Treant.gd" id="1_8164u"]
+[ext_resource type="Texture2D" uid="uid://bmfcom3hbg75x" path="res://scenes/Interactables/Slime pack/Twig Blight Sprite Sheet.png" id="2_diyy6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2hg45"]
+atlas = ExtResource("2_diyy6")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ba207"]
+atlas = ExtResource("2_diyy6")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v6d4a"]
+atlas = ExtResource("2_diyy6")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ef33t"]
+atlas = ExtResource("2_diyy6")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4emk4"]
+atlas = ExtResource("2_diyy6")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g3ta0"]
+atlas = ExtResource("2_diyy6")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ke8s"]
+atlas = ExtResource("2_diyy6")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nxyxo"]
+atlas = ExtResource("2_diyy6")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_blbi8"]
+atlas = ExtResource("2_diyy6")
+region = Rect2(128, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iciyf"]
+atlas = ExtResource("2_diyy6")
+region = Rect2(160, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_51kaq"]
+atlas = ExtResource("2_diyy6")
+region = Rect2(192, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i3ekl"]
+atlas = ExtResource("2_diyy6")
+region = Rect2(224, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_403fm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2hg45")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ba207")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v6d4a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ef33t")
+}],
+"loop": true,
+"name": &"idle_1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4emk4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g3ta0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ke8s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nxyxo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_blbi8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iciyf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_51kaq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i3ekl")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_iwrau"]
+radius = 11.0
+
+[node name="Treant" type="CharacterBody2D"]
+script = ExtResource("1_8164u")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_403fm")
+animation = &"idle_1"
+frame_progress = 0.37452
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 6)
+shape = SubResource("CircleShape2D_iwrau")
