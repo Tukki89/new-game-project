@@ -1,0 +1,70 @@
+[gd_scene load_steps=11 format=3 uid="uid://dvrtu6doiqscq"]
+
+[ext_resource type="Script" path="res://bullet.gd" id="1_ubejs"]
+[ext_resource type="Texture2D" uid="uid://ccvn7hx6ntdtn" path="res://scenes/Interactables/Slime pack/arm_projectile_glowing.png" id="2_kvc68"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3i2dj"]
+atlas = ExtResource("2_kvc68")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_omln8"]
+atlas = ExtResource("2_kvc68")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pap06"]
+atlas = ExtResource("2_kvc68")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8r25v"]
+atlas = ExtResource("2_kvc68")
+region = Rect2(0, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_178ws"]
+atlas = ExtResource("2_kvc68")
+region = Rect2(100, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kwlmj"]
+atlas = ExtResource("2_kvc68")
+region = Rect2(200, 100, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tm3ds"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3i2dj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_omln8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pap06")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8r25v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_178ws")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kwlmj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m2ih4"]
+size = Vector2(36, 20)
+
+[node name="bullet" type="Area2D"]
+script = ExtResource("1_ubejs")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_tm3ds")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(28, -13)
+shape = SubResource("RectangleShape2D_m2ih4")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

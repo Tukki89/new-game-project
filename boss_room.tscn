@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2j432cotnq6r"]
+
+[ext_resource type="PackedScene" uid="uid://dmd8hr7b8ntyi" path="res://scenes/NPC/golem_boss.tscn" id="1_dcep8"]
+[ext_resource type="PackedScene" uid="uid://brin0gve4qj2j" path="res://scenes/Player/player.tscn" id="2_srmeb"]
+
+[node name="BossRoom" type="Node2D"]
+
+[node name="GolemBoss" parent="." instance=ExtResource("1_dcep8")]
+position = Vector2(128, 112)
+
+[node name="Player" parent="." instance=ExtResource("2_srmeb")]
+position = Vector2(32, 200)

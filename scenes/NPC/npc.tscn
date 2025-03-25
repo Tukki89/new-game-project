@@ -33,6 +33,7 @@ radius = 8.0
 radius = 40.0
 
 [node name="npc_guard" type="CharacterBody2D"]
+position = Vector2(0, -8)
 script = ExtResource("1_sle7q")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -52,10 +53,10 @@ shape = SubResource("CircleShape2D_6ld6t")
 debug_color = Color(0.963663, 0.0266239, 0.481737, 0.42)
 
 [node name="Dialogue" parent="." instance=ExtResource("3_enl1l")]
-offset_left = -24.0
-offset_top = -8.0
-offset_right = 16.0
-offset_bottom = 32.0
+offset_left = -8.0
+offset_top = -16.0
+offset_right = 32.0
+offset_bottom = 24.0
 
 [connection signal="body_entered" from="chat_detection_area" to="." method="_on_chat_detection_area_body_entered"]
 [connection signal="body_exited" from="chat_detection_area" to="." method="_on_chat_detection_area_body_exited"]

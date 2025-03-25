@@ -1,0 +1,117 @@
+[gd_scene load_steps=3 format=3 uid="uid://dylvcrb081kpv"]
+
+[ext_resource type="Script" path="res://scenes/npc_quest.gd" id="1_pqv3a"]
+[ext_resource type="Texture2D" uid="uid://bgix1ydbhcy7w" path="res://scenes/Interactables/Slime pack/UiCozyFree.png" id="1_vilt4"]
+
+[node name="npc_quest" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_pqv3a")
+
+[node name="quest1_ui" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 8.0
+offset_right = 105.0
+offset_bottom = 32.0
+scale = Vector2(2, 2)
+texture = ExtResource("1_vilt4")
+region_rect = Rect2(8, 167, 87, 81)
+
+[node name="Name" type="RichTextLabel" parent="quest1_ui"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 4.0
+offset_right = 128.0
+offset_bottom = 44.0
+scale = Vector2(0.2, 0.2)
+text = "Giamil Quest"
+
+[node name="Text" type="RichTextLabel" parent="quest1_ui"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 328.0
+offset_bottom = 68.0
+scale = Vector2(0.2, 0.2)
+text = "Could you destroy the crate there for me so that wer can open it thanks"
+
+[node name="yesButton1" type="Button" parent="quest1_ui"]
+layout_mode = 0
+offset_left = 27.5
+offset_top = 20.0
+offset_right = 68.5
+offset_bottom = 51.0
+scale = Vector2(0.2, 0.2)
+text = "yes"
+
+[node name="noButton1" type="Button" parent="quest1_ui"]
+layout_mode = 0
+offset_left = 39.5
+offset_top = 20.0
+offset_right = 79.5
+offset_bottom = 51.0
+scale = Vector2(0.2, 0.2)
+text = "No"
+
+[node name="no_quest" type="NinePatchRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 24.0
+offset_top = 8.0
+offset_right = 104.0
+offset_bottom = 32.0
+scale = Vector2(2, 2)
+texture = ExtResource("1_vilt4")
+region_rect = Rect2(8, 167, 87, 81)
+metadata/_edit_group_ = true
+
+[node name="Name" type="RichTextLabel" parent="no_quest"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 4.0
+offset_right = 128.0
+offset_bottom = 44.0
+scale = Vector2(0.2, 0.2)
+text = "Giamil Quest"
+
+[node name="Text" type="RichTextLabel" parent="no_quest"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 328.0
+offset_bottom = 68.0
+scale = Vector2(0.2, 0.2)
+text = "For King and Country!"
+
+[node name="finish_quest" type="NinePatchRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 24.0
+offset_top = 8.0
+offset_right = 104.0
+offset_bottom = 32.0
+scale = Vector2(2, 2)
+texture = ExtResource("1_vilt4")
+region_rect = Rect2(8, 167, 87, 81)
+metadata/_edit_group_ = true
+
+[node name="Name" type="RichTextLabel" parent="finish_quest"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 4.0
+offset_right = 128.0
+offset_bottom = 44.0
+scale = Vector2(0.2, 0.2)
+text = "Giamil Quest"
+
+[node name="Text" type="RichTextLabel" parent="finish_quest"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 328.0
+offset_bottom = 68.0
+scale = Vector2(0.2, 0.2)
+text = "Thanks now I can get my supples!"

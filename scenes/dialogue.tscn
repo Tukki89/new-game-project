@@ -15,9 +15,10 @@ script = ExtResource("1_13tmd")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 0
-offset_left = -80.0
-offset_top = -64.0
-offset_bottom = -40.0
+offset_left = 24.0
+offset_top = 8.0
+offset_right = 104.0
+offset_bottom = 32.0
 scale = Vector2(2, 2)
 texture = ExtResource("1_mb5x8")
 region_rect = Rect2(8, 167, 87, 81)
