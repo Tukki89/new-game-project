@@ -1,0 +1,1 @@
+class_name QuestManager extends Node2D

@@ -1,7 +1,6 @@
-[gd_scene load_steps=21 format=3 uid="uid://b57qpk881wspf"]
+[gd_scene load_steps=20 format=3 uid="uid://dv41ri8sfgbg0"]
 
 [ext_resource type="Texture2D" uid="uid://78ayb3rd857h" path="res://arts/characters/NPC/$femHuman2v2.png" id="1_fclyg"]
-[ext_resource type="Script" path="res://scenes/npc.gd" id="1_q65a3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_drvb7"]
 atlas = ExtResource("1_fclyg")
@@ -144,14 +143,13 @@ radius = 32.5576
 
 [node name="npc" type="CharacterBody2D"]
 y_sort_enabled = true
-script = ExtResource("1_q65a3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(1.19209e-07, -7)
 scale = Vector2(1.53125, 1.46875)
 sprite_frames = SubResource("SpriteFrames_wtegs")
 animation = &"idle"
-frame_progress = 0.920048
+frame_progress = 0.589884
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 9)

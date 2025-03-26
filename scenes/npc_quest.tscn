@@ -11,6 +11,7 @@ offset_bottom = 40.0
 script = ExtResource("1_pqv3a")
 
 [node name="quest1_ui" type="NinePatchRect" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 25.0
 offset_top = 8.0
@@ -36,7 +37,6 @@ offset_top = 8.0
 offset_right = 328.0
 offset_bottom = 68.0
 scale = Vector2(0.2, 0.2)
-text = "Could you destroy the crate there for me so that wer can open it thanks"
 
 [node name="yesButton1" type="Button" parent="quest1_ui"]
 layout_mode = 0
@@ -115,3 +115,6 @@ offset_right = 328.0
 offset_bottom = 68.0
 scale = Vector2(0.2, 0.2)
 text = "Thanks now I can get my supples!"
+
+[connection signal="pressed" from="quest1_ui/yesButton1" to="." method="_on_yes_button_1_pressed"]
+[connection signal="pressed" from="quest1_ui/noButton1" to="." method="_on_no_button_1_pressed"]

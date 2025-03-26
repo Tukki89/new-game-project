@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bsa6g3mkgh2to"]
+[gd_scene load_steps=7 format=3 uid="uid://bsa6g3mkgh2to"]
 
 [ext_resource type="PackedScene" uid="uid://brin0gve4qj2j" path="res://scenes/Player/player.tscn" id="1_84ii0"]
 [ext_resource type="PackedScene" uid="uid://bqmkskahi0qc8" path="res://scenes/Interactables/crate.tscn" id="2_xitap"]
 [ext_resource type="Script" path="res://script/Interactables/damage.gd" id="3_q53p6"]
 [ext_resource type="PackedScene" uid="uid://dwjknuitxjnp4" path="res://scenes/UI/gui.tscn" id="4_ivlme"]
+[ext_resource type="PackedScene" uid="uid://dbfhf62x1ddke" path="res://scenes/noble_npc.tscn" id="5_koq4g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_31c3u"]
 size = Vector2(28, 27)
@@ -34,5 +35,7 @@ position = Vector2(266, 102.5)
 shape = SubResource("RectangleShape2D_31c3u")
 
 [node name="GUI" parent="." instance=ExtResource("4_ivlme")]
+
+[node name="nobleNPC" parent="." instance=ExtResource("5_koq4g")]
 
 [connection signal="body_entered" from="killzone" to="killzone" method="_on_body_entered"]

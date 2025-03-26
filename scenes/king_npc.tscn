@@ -316,8 +316,7 @@ script = ExtResource("1_rt37k")
 position = Vector2(2, 2)
 scale = Vector2(1.531, 1.531)
 sprite_frames = SubResource("SpriteFrames_3c7tx")
-animation = &"point_w"
-frame_progress = 0.676435
+animation = &"idle"
 speed_scale = 2.0
 offset = Vector2(0, -10)
 
@@ -326,6 +325,7 @@ position = Vector2(0, 5)
 shape = SubResource("CircleShape2D_lfmcu")
 
 [node name="chat_detection_area" type="Area2D" parent="."]
+collision_layer = 64
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="chat_detection_area"]
 position = Vector2(0, -6)
