@@ -17,3 +17,5 @@ stream = ExtResource("1_qo2cl")
 autoplay = true
 expand = true
 script = ExtResource("2_lhub7")
+
+[connection signal="finished" from="VideoStreamPlayer" to="VideoStreamPlayer" method="_on_finished"]
