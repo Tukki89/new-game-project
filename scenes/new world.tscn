@@ -2064,7 +2064,7 @@ position = Vector2(748, -82)
 
 [node name="nobleNPC" parent="." instance=ExtResource("13_jdhbf")]
 z_index = 7
-position = Vector2(-16, -219)
+position = Vector2(121, 30)
 
 [node name="nobleNPC2" parent="." instance=ExtResource("13_jdhbf")]
 z_index = 7
