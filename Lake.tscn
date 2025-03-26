@@ -2570,7 +2570,6 @@ script = ExtResource("6_hlyol")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Lake_to_EF"]
 position = Vector2(-2.09044, 16.9891)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_aikfr")
 
 [connection signal="body_entered" from="Lake_to_EF" to="Lake_to_EF" method="_on_body_entered"]

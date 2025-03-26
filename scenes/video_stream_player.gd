@@ -5,7 +5,7 @@ func _ready():
 
 func _on_video_finished():
 	stop()  # Stops the video
-	get_tree().change_scene_to_file("res://next_scene.tscn")  # Change scene
+	get_tree().change_scene_to_file("res://scenes/2 cutscene.tscn")  # Change scene
 
 
 func _on_finished() -> void:
