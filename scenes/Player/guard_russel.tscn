@@ -1,0 +1,77 @@
+[gd_scene load_steps=11 format=3 uid="uid://djtmsykoar0o7"]
+
+[ext_resource type="Texture2D" uid="uid://c8og7goekghqd" path="res://2d_rpg_sprites/Sprites/Player/Asset Pack 2/Wall Guards(48x64).png" id="1_h7y5y"]
+[ext_resource type="Script" path="res://scenes/Player/guard_russel.gd" id="1_yvgg4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r2uxo"]
+atlas = ExtResource("1_h7y5y")
+region = Rect2(0, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j1v5j"]
+atlas = ExtResource("1_h7y5y")
+region = Rect2(48, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hc5rt"]
+atlas = ExtResource("1_h7y5y")
+region = Rect2(0, 64, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fdid5"]
+atlas = ExtResource("1_h7y5y")
+region = Rect2(48, 64, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cyh7s"]
+atlas = ExtResource("1_h7y5y")
+region = Rect2(96, 64, 48, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mnqyu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r2uxo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j1v5j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hc5rt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fdid5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cyh7s")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8ex5v"]
+radius = 5.83095
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v17sa"]
+radius = 46.2709
+
+[node name="Guard_Russel" type="CharacterBody2D"]
+collision_layer = 64
+script = ExtResource("1_yvgg4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_mnqyu")
+animation = &"idle"
+frame_progress = 0.572666
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_8ex5v")
+
+[node name="chat_detection_area" type="Area2D" parent="."]
+collision_layer = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="chat_detection_area"]
+shape = SubResource("CircleShape2D_v17sa")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="chat_detection_area" to="." method="_on_chat_detection_area_body_entered"]
+[connection signal="body_exited" from="chat_detection_area" to="." method="_on_chat_detection_area_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

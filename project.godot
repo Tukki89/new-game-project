@@ -22,15 +22,29 @@ Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 [dialogic]
 
 directories/dch_directory={
+"Brunhilde": "res://Brunhilde.dch",
 "Gallard": "res://dialogicchar/Gallard.dch",
 "King": "res://dialogicchar/King.dch",
+"Mikhal": "res://Mikhal.dch",
 "Prince": "res://dialogicchar/Siegfried.dch",
 "Siegfried": "res://Siegfried.dch",
+"Sir Waldheim": "res://Sir Waldheim.dch",
+"Syestem": "res://Syestem.dch",
+"Thiery": "res://Thiery.dch",
 "character": "res://character.dch"
 }
 directories/dtl_directory={
+"DuskApproach": "res://DuskApproach.dtl",
 "KingEntrance": "res://dialogicchar/KingEntrance.dtl",
-"Noble_ThoughtsA": "res://dialogicchar/Noble_ThoughtsA.dtl"
+"LutherWounded": "res://LutherWounded.dtl",
+"Noble_ThoughtsA": "res://dialogicchar/Noble_ThoughtsA.dtl",
+"OutsideCastle": "res://OutsideCastle.dtl",
+"RoderichSay": "res://RoderichSay.dtl",
+"Russel_Camp": "res://Russel_Camp.dtl",
+"SiegCamp": "res://SiegCamp.dtl",
+"Whisperers": "res://Whisperers.dtl",
+"[Scene Outside the Castle Gates]": "res://[Scene Outside the Castle Gates].dtl",
+"brunhilde": "res://brunhilde.dtl"
 }
 extensions_folder="res://addons/dialogic_additions"
 text/letter_speed=0.01
@@ -65,6 +79,10 @@ audio/channel_defaults={
 "volume": 0.0
 }
 }
+glossary/default_case_sensitive=true
+layout/style_list=[]
+layout/default_style="Default"
+variables={}
 
 [display]
 

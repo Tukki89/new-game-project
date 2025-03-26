@@ -1,0 +1,86 @@
+[gd_scene load_steps=13 format=3 uid="uid://dyvcl203htbr6"]
+
+[ext_resource type="Texture2D" uid="uid://c8og7goekghqd" path="res://2d_rpg_sprites/Sprites/Player/Asset Pack 2/Wall Guards(48x64).png" id="1_33jbu"]
+[ext_resource type="Script" path="res://scenes/Player/wounded_guard.gd" id="1_uw177"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fcuvj"]
+atlas = ExtResource("1_33jbu")
+region = Rect2(96, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mqu7x"]
+atlas = ExtResource("1_33jbu")
+region = Rect2(144, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bjbpd"]
+atlas = ExtResource("1_33jbu")
+region = Rect2(192, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hcajs"]
+atlas = ExtResource("1_33jbu")
+region = Rect2(240, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pr6fn"]
+atlas = ExtResource("1_33jbu")
+region = Rect2(144, 64, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hagqb"]
+atlas = ExtResource("1_33jbu")
+region = Rect2(192, 64, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_djxgo"]
+atlas = ExtResource("1_33jbu")
+region = Rect2(240, 64, 48, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mlpq1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fcuvj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mqu7x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bjbpd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hcajs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pr6fn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hagqb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_djxgo")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wi7rk"]
+radius = 5.83095
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o571l"]
+radius = 46.2709
+
+[node name="WoundedGuard" type="CharacterBody2D"]
+script = ExtResource("1_uw177")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_mlpq1")
+animation = &"idle"
+frame_progress = 0.355591
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_wi7rk")
+
+[node name="chat_detection_area" type="Area2D" parent="."]
+collision_layer = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="chat_detection_area"]
+shape = SubResource("CircleShape2D_o571l")
+
+[node name="Timer" type="Timer" parent="."]
