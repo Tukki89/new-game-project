@@ -140,7 +140,7 @@ animations = [{
 radius = 7.07107
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w5fad"]
-radius = 30.3645
+radius = 61.5224
 
 [node name="nobleNPC" type="CharacterBody2D"]
 y_sort_enabled = true
@@ -157,6 +157,7 @@ position = Vector2(-1, 17)
 shape = SubResource("CircleShape2D_qrc1s")
 
 [node name="chat_area_detection" type="Area2D" parent="."]
+collision_layer = 64
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="chat_area_detection"]
 position = Vector2(0, 3)

@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal stick_collected
+
 @onready var anim_tree = $AnimationTree
 @onready var anim_state = anim_tree.get("parameters/playback")
 @onready var sprite = $Sprite2D  # Change to $AnimatedSprite2D if needed

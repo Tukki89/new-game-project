@@ -1,11 +1,15 @@
-[gd_scene load_steps=12 format=4 uid="uid://dcmcfnvw2xbh1"]
+[gd_scene load_steps=16 format=4 uid="uid://dcmcfnvw2xbh1"]
 
+[ext_resource type="Script" path="res://script/level script/camp.gd" id="1_f4pp4"]
 [ext_resource type="Texture2D" uid="uid://bgtvol82oifdm" path="res://2d_rpg_sprites/Sprites/Player/Asset Pack 1/Grassland Tileset.png" id="1_xkln1"]
 [ext_resource type="Texture2D" uid="uid://lr81oxh0stfv" path="res://2d_rpg_sprites/Sprites/Player/Asset Pack 1/Water Animated.png" id="2_lnu7r"]
 [ext_resource type="Texture2D" uid="uid://g04lndr0hm27" path="res://2d_rpg_sprites/Sprites/Player/Asset Pack 2/Swamp Tileset.png" id="3_8vp4y"]
 [ext_resource type="Texture2D" uid="uid://clq82u74ynpvb" path="res://2d_rpg_sprites/Sprites/Player/Asset Pack 1/Beach Tileset.png" id="4_h78u6"]
 [ext_resource type="PackedScene" uid="uid://bqmkskahi0qc8" path="res://scenes/Interactables/crate.tscn" id="5_akifj"]
-[ext_resource type="PackedScene" uid="uid://brin0gve4qj2j" path="res://scenes/Player/player.tscn" id="6_dk5us"]
+[ext_resource type="PackedScene" uid="uid://cag2tx5w8tr7n" path="res://scenes/Interactables/camp_tocastle.tscn" id="6_00fon"]
+[ext_resource type="PackedScene" uid="uid://durvmitribjlm" path="res://dusk_entr.tscn" id="8_ivomj"]
+[ext_resource type="PackedScene" uid="uid://bsbtlfcshp1da" path="res://scenes/NPC/npc.tscn" id="9_mmkcp"]
+[ext_resource type="PackedScene" uid="uid://5x8ppfj4juni" path="res://scenes/NPC/guard_1.tscn" id="10_j10kl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_px84d"]
 texture = ExtResource("1_xkln1")
@@ -1673,6 +1677,7 @@ sources/3 = SubResource("TileSetAtlasSource_apbsl")
 
 [node name="Forest Camp s1 tutorial" type="Node2D"]
 position = Vector2(575, 310)
+script = ExtResource("1_f4pp4")
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(-3, -9)
@@ -1722,8 +1727,20 @@ rotation = 0.00304779
 tile_map_data = PackedByteArray("AADt//n/AAADAA8AAADt//r/AAADABAAAADu//n/AAADAA8AAADu//r/AAADABAAAADt//v/AAADAA8AAADt//z/AAADABAAAADu//v/AAADAA8AAADu//z/AAADABAAAAAQAPX/AAADAA4AAAANAPX/AAAFAA4AAAAUAPb/AAAEAA4AAAAOAPj/AAANABAAAAAMAPr/AAAQABAAAAATAP3/AAAFABEAAAAQAPz/AAAEABEAAAAKAP3/AAAFABEAAAAJAP3/AAAEABEAAAAXAPr/AAANABAAAAAUAPj/AAAOABAAAAASAPX/AAAPABAAAAAMAPT/AAANABAAAAAIAPb/AAAPABAAAAALAP7/AAAIAAsAAAAMAP7/AAAIAA0AAAAQAP7/AAAIAAsAAAARAP7/AAAIAA0AAAAVAP7/AAAIAAsAAAAJAP7/AAAHAAsAAAAHAAQAAAAFABUAAADx/wAAAAAFABUAAAAVAPr/AAAEABEAAAAMAPn/AAAQAAUAAAAKAPj/AAARAAYAAAARAP3/AAARAAYAAAATAPz/AAASAAUAAAAIAPz/AAAPAAQAAAALAPv/AAAPAAYAAAAXAPn/AAAPAAYAAAAQAPT/AAAPAAYAAAAPAPX/AAASAAYAAAAQAPj/AAACAAAAAAATAPb/AAAPAAQAAAAVAPX/AAARAAQAAAD9//7/AAARABQAAAD9////AAARABUAAAD+//7/AAASABQAAAD+////AAASABUAAAD///z/AAAHABAAAAAAAPz/AAAIABAAAAD+//v/AAAJABEAAAD+//3/AAAIABEAAAD+//z/AAAIABAAAAD7//r/AAARABQAAAD7//v/AAARABUAAAD8//r/AAASABQAAAD8//v/AAASABUAAAD2////AAADAA8AAAD2/wAAAAADABAAAADp////AAADAA8AAADp/wAAAAADABAAAADx//7/AgAKABEAAADr/wIAAgAKABEAAAD4/wIAAgAKABEAAAD2//v/AAANAA4AAAD2//z/AAANAA8AAAD3//v/AAAOAA4AAAD3//z/AAAOAA8AAAD9/wAAAAAPAA4AAAD9/wEAAAAPAA8AAAD+/wAAAAAQAA4AAAD+/wEAAAAQAA8AAAAOAAwAAAAKAA4AAAAOAA0AAAAKAA8AAAAOAA4AAAAKABAAAAAPAAwAAAALAA4AAAAPAA0AAAALAA8AAAAPAA4AAAALABAAAAAQAAwAAAAMAA4AAAAQAA0AAAAMAA8AAAAQAA4AAAAMABAAAAAKAAkAAAASABAAAAAKAAoAAAASABEAAAAIAA4AAAARABAAAAAIAA8AAAARABEAAAAVAA8AAAARABAAAAAVABAAAAARABEAAAALAA0AAAANABAAAAATAA4AAAAPABAAAAAHAAwAAAAQABAAAAARAA8AAAAPAAYAAAANABAAAAARAAYAAAAMAAwAAAAPAAUAAAASAAwAAAASAAUAAAATAAkAAAASABAAAAATAAoAAAASABEAAAAJAAsAAAARABQAAAAJAAwAAAARABUAAAAKAAsAAAASABQAAAAKAAwAAAASABUAAAAXAA4AAAAFABEAAAAGAAsAAAAEABEAAAAIAAoAAAAFABEAAADv/w4AAAANABAAAADx/w8AAAAOABAAAADy/w8AAAAOABAAAADz/w0AAAANABAAAAD5/wwAAAARABQAAAD5/w0AAAARABUAAAD6/wwAAAASABQAAAD6/w0AAAASABUAAAD9/w8AAAAFABEAAAD2/xAAAAAEABEAAADy/w4AAAAEABEAAAD7/w8AAAAPAAUAAAD//w0AAAARAAUAAAD0/w8AAAASAAUAAADu/wwAAAAPAAYAAAD0/wsAAAAPAAQAAADq/wsAAAAPAAQAAADv/xAAAAAQAAYAAAD5/w8AAAAPAAUAAAA=")
 tile_set = SubResource("TileSet_i25pj")
 
-[node name="Player" parent="." instance=ExtResource("6_dk5us")]
-position = Vector2(-75, 136)
-
 [node name="crate" parent="." instance=ExtResource("5_akifj")]
 position = Vector2(-500, 330)
+
+[node name="Camp_entry" parent="." instance=ExtResource("6_00fon")]
+position = Vector2(-562, 154)
+rotation = -1.57053
+
+[node name="DuskEntr" parent="." instance=ExtResource("8_ivomj")]
+position = Vector2(553, 150)
+rotation = 1.61003
+
+[node name="npc_guard" parent="." instance=ExtResource("9_mmkcp")]
+z_index = 1
+position = Vector2(-456, 53)
+
+[node name="Guard1" parent="." instance=ExtResource("10_j10kl")]
+position = Vector2(-70, 40)
