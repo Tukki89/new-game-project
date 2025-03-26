@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://dw4rfaoilh7p8"]
+[gd_scene load_steps=16 format=4 uid="uid://dw4rfaoilh7p8"]
 
 [ext_resource type="Script" path="res://script/level script/castle_exit.gd" id="1_6dgqj"]
 [ext_resource type="Texture2D" uid="uid://bgtvol82oifdm" path="res://2d_rpg_sprites/Sprites/Player/Asset Pack 1/Grassland Tileset.png" id="1_25vyx"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://clq82u74ynpvb" path="res://2d_rpg_sprites/Sprites/Player/Asset Pack 1/Beach Tileset.png" id="4_qj7hw"]
 [ext_resource type="PackedScene" uid="uid://brin0gve4qj2j" path="res://scenes/Player/player.tscn" id="5_p1xh8"]
 [ext_resource type="PackedScene" uid="uid://8hygukf60ukg" path="res://scenes/Interactables/camp_entry.tscn" id="6_eirlx"]
+[ext_resource type="Script" path="res://exitguardialogue.gd" id="8_2d6jm"]
+[ext_resource type="PackedScene" uid="uid://coe8u25pokref" path="res://scenes/Player/city_guards.tscn" id="9_0is11"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1atwm"]
 texture = ExtResource("1_25vyx")
@@ -1651,6 +1653,9 @@ sources/1 = SubResource("TileSetAtlasSource_ncmjk")
 sources/2 = SubResource("TileSetAtlasSource_32e0k")
 sources/3 = SubResource("TileSetAtlasSource_dc57u")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d7lbt"]
+size = Vector2(227, 20)
+
 [node name="CastleExit" type="Node2D"]
 script = ExtResource("1_6dgqj")
 metadata/_edit_vertical_guides_ = [-2.0]
@@ -1701,4 +1706,20 @@ position = Vector2(575, 627)
 rotation = -3.12339
 
 [node name="Player" parent="." instance=ExtResource("5_p1xh8")]
-position = Vector2(569, 422)
+position = Vector2(548, 228)
+
+[node name="Exit_Dialogue_Detector" type="Area2D" parent="."]
+script = ExtResource("8_2d6jm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exit_Dialogue_Detector"]
+position = Vector2(565.5, 295)
+shape = SubResource("RectangleShape2D_d7lbt")
+
+[node name="CityGuards" parent="." instance=ExtResource("9_0is11")]
+position = Vector2(666, 298)
+
+[node name="CityGuards2" parent="." instance=ExtResource("9_0is11")]
+position = Vector2(474, 297)
+
+[connection signal="body_entered" from="Exit_Dialogue_Detector" to="Exit_Dialogue_Detector" method="_on_body_entered"]
+[connection signal="body_exited" from="Exit_Dialogue_Detector" to="Exit_Dialogue_Detector" method="_on_body_exited"]

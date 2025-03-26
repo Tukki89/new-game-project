@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://coe8u25pokref"]
+
+[ext_resource type="Texture2D" uid="uid://c8og7goekghqd" path="res://2d_rpg_sprites/Sprites/Player/Asset Pack 2/Wall Guards(48x64).png" id="1_cqsyo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_onfcx"]
+atlas = ExtResource("1_cqsyo")
+region = Rect2(0, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0xvrq"]
+atlas = ExtResource("1_cqsyo")
+region = Rect2(48, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tr5yc"]
+atlas = ExtResource("1_cqsyo")
+region = Rect2(0, 64, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ya3uy"]
+atlas = ExtResource("1_cqsyo")
+region = Rect2(48, 64, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8gucr"]
+atlas = ExtResource("1_cqsyo")
+region = Rect2(96, 64, 48, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hgtne"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_onfcx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0xvrq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tr5yc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ya3uy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8gucr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ji4px"]
+
+[node name="CityGuards" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_hgtne")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 15)
+shape = SubResource("CircleShape2D_ji4px")
