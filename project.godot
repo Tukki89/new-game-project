@@ -36,6 +36,7 @@ directories/dch_directory={
 directories/dtl_directory={
 "DuskApproach": "res://DuskApproach.dtl",
 "DuskApproach2": "res://DuskApproach2.dtl",
+"EnchantedEntrance": "res://EnchantedEntrance.dtl",
 "KingEntrance": "res://dialogicchar/KingEntrance.dtl",
 "Lake1": "res://Lake1.dtl",
 "LutherWounded": "res://LutherWounded.dtl",
