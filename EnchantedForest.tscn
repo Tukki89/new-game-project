@@ -1,9 +1,8 @@
-[gd_scene load_steps=17 format=4 uid="uid://di1y673h66wye"]
+[gd_scene load_steps=20 format=4 uid="uid://di1y673h66wye"]
 
 [ext_resource type="Texture2D" uid="uid://drjyd5iqpjsu5" path="res://2d_rpg_sprites/Sprites/Player/Asset Pack 2/Asset Pack 3/Poison Forest.png" id="1_ckg7a"]
 [ext_resource type="Texture2D" uid="uid://4nd4yl6m7cva" path="res://2d_rpg_sprites/Sprites/Player/Asset Pack 2/Asset Pack 3/poison tree wall.png" id="2_c17yc"]
 [ext_resource type="Texture2D" uid="uid://bgtvol82oifdm" path="res://2d_rpg_sprites/Sprites/Player/Asset Pack 1/Grassland Tileset.png" id="3_6p687"]
-[ext_resource type="PackedScene" uid="uid://bqmkskahi0qc8" path="res://scenes/Interactables/crate.tscn" id="4_ba8dm"]
 [ext_resource type="PackedScene" uid="uid://brin0gve4qj2j" path="res://scenes/Player/player.tscn" id="4_ecd66"]
 [ext_resource type="PackedScene" uid="uid://rm8a7f5qxqxq" path="res://EF_to_DH.tscn" id="5_syqll"]
 [ext_resource type="PackedScene" uid="uid://6wmajq8yloqq" path="res://e_fto_lk.tscn" id="6_mn44e"]
@@ -12,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://cwm6qvwd5gqn2" path="res://scenes/Level/cat.tscn" id="10_oyrfn"]
 [ext_resource type="PackedScene" uid="uid://btls2wdxuwr6" path="res://scenes/Level/treant.tscn" id="11_wf4gx"]
 [ext_resource type="PackedScene" uid="uid://b03luxi5mt7vg" path="res://scenes/Level/yellow_slime.tscn" id="12_ljv8o"]
+[ext_resource type="Script" path="res://dialogicchar/enchanted_entrance_dll.gd" id="13_1j606"]
+[ext_resource type="PackedScene" uid="uid://ee5et3b4hujd" path="res://swan.tscn" id="13_2cp4e"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0ngmu"]
 texture = ExtResource("1_ckg7a")
@@ -982,6 +983,12 @@ sources/0 = SubResource("TileSetAtlasSource_0ngmu")
 sources/1 = SubResource("TileSetAtlasSource_yc8qm")
 sources/2 = SubResource("TileSetAtlasSource_mi50e")
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_qvfx8"]
+radius = 24.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t56yd"]
+radius = 64.4981
+
 [node name="Node2D" type="Node2D"]
 position = Vector2(12, -3)
 
@@ -1043,30 +1050,48 @@ use_parent_material = true
 tile_map_data = PackedByteArray("AAACAAoAAAAPAAsAAAACAAsAAAAPAAwAAAACAAwAAAAPAA0AAAACAA0AAAAPAA4AAAACAA4AAAAPAA8AAAADAAoAAAAQAAsAAAADAAsAAAAQAAwAAAADAAwAAAAQAA0AAAADAA0AAAAQAA4AAAADAA4AAAAQAA8AAAAEAAoAAAARAAsAAAAEAAsAAAARAAwAAAAEAAwAAAARAA0AAAAAAA4AAAAPAAkAAAAAAA8AAAAPAAoAAAABAA4AAAAQAAkAAAABAA8AAAAQAAoAAAARAAkAAAAIAAsAAAARAAoAAAAIAAwAAAARAAsAAAAIAA0AAAARAAwAAAAIAA4AAAARAA0AAAAIAA8AAAASAAkAAAAJAAsAAAASAAoAAAAJAAwAAAASAAsAAAAJAA0AAAASAAwAAAAJAA4AAAASAA0AAAAJAA8AAAATAAkAAAAKAAsAAAATAAoAAAAKAAwAAAATAAsAAAAKAA0AAAATAAwAAAAKAA4AAAATAA0AAAAKAA8AAAAUAAkAAAALAAsAAAAUAAoAAAALAAwAAAAUAAsAAAALAA0AAAAUAAwAAAALAA4AAAAUAA0AAAALAA8AAAALAAwAAAARAAkAAAALAA0AAAARAAoAAAAWABEAAAARAAkAAAAWABIAAAARAAoAAAAbAAkAAAAPAAsAAAAbAAoAAAAPAAwAAAAbAAsAAAAPAA0AAAAbAAwAAAAPAA4AAAAbAA0AAAAPAA8AAAAcAAkAAAAQAAsAAAAcAAoAAAAQAAwAAAAcAAsAAAAQAA0AAAAcAAwAAAAQAA4AAAAcAA0AAAAQAA8AAAAdAAkAAAARAAsAAAAdAAoAAAARAAwAAAAdAAsAAAARAA0AAAAkAAQAAAAMAAsAAAAkAAUAAAAMAAwAAAAkAAYAAAAMAA0AAAAkAAgAAAAMAA8AAAAlAAQAAAANAAsAAAAlAAUAAAANAAwAAAAlAAYAAAANAA0AAAAlAAcAAAANAA4AAAAlAAgAAAANAA8AAAAmAAQAAAAOAAsAAAAmAAUAAAAOAAwAAAAmAAYAAAAOAA0AAAAmAAcAAAAOAA4AAAAmAAgAAAAOAA8AAAAHABUAAAAPAAsAAAAHABYAAAAPAAwAAAAHABcAAAAPAA0AAAAHABgAAAAPAA4AAAAHABkAAAAPAA8AAAAIABUAAAAQAAsAAAAIABYAAAAQAAwAAAAIABcAAAAQAA0AAAAIABgAAAAQAA4AAAAIABkAAAAQAA8AAAAJABUAAAARAAsAAAAJABYAAAARAAwAAAAJABcAAAARAA0AAAAJABkAAAARAA8AAAAjABIAAAAPAAsAABAiABIAAAAQAAsAABAhABIAAAARAAsAABAjABMAAAAPAAwAABAiABMAAAAQAAwAABAhABMAAAARAAwAABAjABQAAAAPAA0AABAiABQAAAAQAA0AABAhABQAAAARAA0AABAjABUAAAAPAA4AABAiABUAAAAQAA4AABAjABYAAAAPAA8AABAiABYAAAAQAA8AABAhABYAAAARAA8AABAvAAYAAAARAAsAAAAuAAYAAAAQAAsAAAAtAAYAAAAPAAsAAAAvAAcAAAARAAwAAAAuAAcAAAAQAAwAAAAtAAcAAAAPAAwAAAAvAAgAAAARAA0AAAAuAAgAAAAQAA0AAAAtAAgAAAAPAA0AAAAuAAkAAAAQAA4AAAAtAAkAAAAPAA4AAAAuAAoAAAAQAA8AAAAtAAoAAAAPAA8AAAAZABMAAAAPAAkAAAAZABQAAAAPAAoAAAAaABMAAAAQAAkAAAAaABQAAAAQAAoAAAAeABEAAAARAAkAAAAeABIAAAARAAoAAAAgAA0AAAARAAkAAAAgAA4AAAARAAoAAAADAA8AAgAFABUAAAAgAAYAAgAFABUAAAAgAP3/AAAIAAsAAAAgAP7/AAAIAAwAAAAgAP//AAAIAA0AAAAgAAAAAAAIAA4AAAAgAAEAAAAIAA8AAAAhAP3/AAAJAAsAAAAhAP7/AAAJAAwAAAAhAP//AAAJAA0AAAAhAAAAAAAJAA4AAAAhAAEAAAAJAA8AAAAiAP3/AAAKAAsAAAAiAP7/AAAKAAwAAAAiAP//AAAKAA0AAAAiAAAAAAAKAA4AAAAiAAEAAAAKAA8AAAAjAP3/AAALAAsAAAAjAP7/AAALAAwAAAAjAP//AAALAA0AAAAjAAAAAAALAA4AAAAjAAEAAAALAA8AAAAtAP7/AAAMAAsAAAAtAP//AAAMAAwAAAAtAAAAAAAMAA0AAAAtAAIAAAAMAA8AAAAuAP7/AAANAAsAAAAuAP//AAANAAwAAAAuAAAAAAANAA0AAAAuAAEAAAANAA4AAAAuAAIAAAANAA8AAAAvAP7/AAAOAAsAAAAvAP//AAAOAAwAAAAvAAAAAAAOAA0AAAAvAAEAAAAOAA4AAAAvAAIAAAAOAA8AAAAdAA0AAAARAA8AAAAEAA4AAAARAA8AAAA=")
 tile_set = SubResource("TileSet_ooghn")
 
-[node name="crate" parent="TileMap" instance=ExtResource("4_ba8dm")]
-position = Vector2(684, 91)
-
 [node name="DH>EF" parent="." instance=ExtResource("5_syqll")]
 position = Vector2(38, 427)
 rotation = 1.57649
 
 [node name="Player" parent="." instance=ExtResource("4_ecd66")]
-position = Vector2(722, 42)
+position = Vector2(108, 435)
 
 [node name="EFtoLK" parent="." instance=ExtResource("6_mn44e")]
 position = Vector2(724, 15)
 
 [node name="slime" parent="." instance=ExtResource("7_ebo3m")]
-position = Vector2(708, 139)
+position = Vector2(716, 403)
 
 [node name="Blue_Slime" parent="." instance=ExtResource("8_08bij")]
-position = Vector2(804, 211)
+position = Vector2(556, 539)
 
 [node name="Cat" parent="." instance=ExtResource("10_oyrfn")]
-position = Vector2(692, 59)
+position = Vector2(628, 299)
 
 [node name="Treant" parent="." instance=ExtResource("11_wf4gx")]
-position = Vector2(748, 83)
+position = Vector2(884, 259)
 
 [node name="yellow_slime" parent="." instance=ExtResource("12_ljv8o")]
-position = Vector2(652, 243)
+position = Vector2(532, 339)
+
+[node name="EnchantedEntranceDll" type="Area2D" parent="."]
+script = ExtResource("13_1j606")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnchantedEntranceDll"]
+
+[node name="MysthicSwan" parent="." instance=ExtResource("13_2cp4e")]
+position = Vector2(724, 51)
+script = null
+
+[node name="CollisionShape2D" parent="MysthicSwan" index="1"]
+shape = SubResource("CircleShape2D_qvfx8")
+
+[node name="CollisionShape2D" parent="MysthicSwan/detector" index="0"]
+position = Vector2(0, 24)
+shape = SubResource("CircleShape2D_t56yd")
+debug_color = Color(0.89253, 0.000233723, 0.786947, 0.42)
+
+[connection signal="body_entered" from="EnchantedEntranceDll" to="EnchantedEntranceDll" method="_on_body_entered"]
+
+[editable path="MysthicSwan"]

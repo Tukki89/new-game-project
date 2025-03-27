@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://ee5et3b4hujd"]
+
+[ext_resource type="Script" path="res://swan.gd" id="1_glu2x"]
+[ext_resource type="Texture2D" uid="uid://dkbg88jojourm" path="res://474483665_1137097491355081_1679237380856627371_n.png" id="2_7nes0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6hpxo"]
+atlas = ExtResource("2_7nes0")
+region = Rect2(0, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qutrt"]
+atlas = ExtResource("2_7nes0")
+region = Rect2(40, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b6bx3"]
+atlas = ExtResource("2_7nes0")
+region = Rect2(80, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0xxvo"]
+atlas = ExtResource("2_7nes0")
+region = Rect2(120, 0, 40, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_je3e2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6hpxo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qutrt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b6bx3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0xxvo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Swan" type="CharacterBody2D"]
+script = ExtResource("1_glu2x")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_je3e2")
+frame_progress = 0.352096
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="detector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detector"]
+
+[connection signal="area_shape_entered" from="detector" to="." method="_on_detector_area_shape_entered"]
