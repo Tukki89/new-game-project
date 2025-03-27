@@ -61,3 +61,7 @@ func flip_sprite(direction_x: float):
 
 func _on_collision_shape_2d_child_entered_tree(node: Node) -> void:
 	pass # Replace with function body.
+
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	pass # Replace with function body.

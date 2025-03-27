@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://bwr35pd05r0be"]
+[gd_scene load_steps=26 format=4 uid="uid://bwr35pd05r0be"]
 
 [ext_resource type="Texture2D" uid="uid://bgtvol82oifdm" path="res://2d_rpg_sprites/Sprites/Player/Asset Pack 1/Grassland Tileset.png" id="1_ewnly"]
 [ext_resource type="Texture2D" uid="uid://g04lndr0hm27" path="res://2d_rpg_sprites/Sprites/Player/Asset Pack 2/Swamp Tileset.png" id="2_tmfyu"]
@@ -2936,6 +2936,9 @@ size = Vector2(20, 289.996)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b5ari"]
 size = Vector2(20, 249.015)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3na5s"]
+size = Vector2(399, 23.5)
+
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("5_mpbfo")]
@@ -3037,6 +3040,14 @@ rotation = 1.55916
 
 [node name="slspawn3" type="Marker2D" parent="Cinematic"]
 
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(196.5, 480)
+shape = SubResource("RectangleShape2D_3na5s")
+debug_color = Color(0.889106, 9.91493e-06, 0.582955, 0.42)
+
 [connection signal="body_entered" from="Lake_to_EF" to="Lake_to_EF" method="_on_body_entered"]
 [connection signal="body_entered" from="Cinematic" to="Cinematic" method="_on_body_entered"]
 [connection signal="child_entered_tree" from="Cinematic/CollisionShape2D" to="Cinematic" method="_on_collision_shape_2d_child_entered_tree"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
