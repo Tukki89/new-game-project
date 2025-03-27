@@ -57,3 +57,7 @@ func flip_sprite(direction_x: float):
 		sprite.flip_h = true  # Face left
 	elif direction_x > 0:
 		sprite.flip_h = false  # Face right
+
+
+func _on_collision_shape_2d_child_entered_tree(node: Node) -> void:
+	pass # Replace with function body.

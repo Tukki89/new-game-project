@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://bw7whsub26b1n"]
+
+[ext_resource type="Texture2D" uid="uid://b82euh3ekqeeu" path="res://arts/$femHuman1v2.png" id="1_0c8va"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_83oua"]
+atlas = ExtResource("1_0c8va")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3sthk"]
+atlas = ExtResource("1_0c8va")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_itfrh"]
+atlas = ExtResource("1_0c8va")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_arwah"]
+atlas = ExtResource("1_0c8va")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_56cl1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_83oua")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3sthk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_itfrh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_arwah")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oul62"]
+
+[node name="swanprincess" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_56cl1")
+animation = &"walk"
+frame_progress = 0.0720041
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_oul62")
