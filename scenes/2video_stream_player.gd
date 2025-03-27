@@ -1,11 +1,12 @@
 extends VideoStreamPlayer
 
 func _ready():
-	connect("finished", Callable(self, "_on_video_finished"))
+	finished.connect(_on_video_finished)  # Ensure connection
 
 func _on_video_finished():
-	stop()  # Stops the video
-	get_tree().change_scene_to_file("res://scenes/new world.tscn")  # Change scene
+	print("Cutscene 2 finished, changing to gameplay...")  # Debugging print
+	stop()
+	get_tree().change_scene_to_file("res://scenes/new world.tscn")  # Ensure correct path
 
 
 func _on_finished() -> void:
