@@ -7,32 +7,20 @@ var dialogue_played = false
 
 @export var swan_princess_scene: PackedScene  # Swan Princess scene
 @export var rothbart_scene: PackedScene  # Rothbart scene
-@export var spawn_marker: NodePath  # Marker2D for Swan Princess
+@export var spawn: NodePath  # Marker2D for Swan Princess (renamed)
 @export var rspawn: NodePath  # Marker2D for Rothbart
-@export var dialog_id: String = "OutsideCastle"  # Dialogic event ID
+@export var dialog_id: String = "Confrontation"  # Dialogic event ID
+
+var swan_princess: Node2D = null
+var rothbart: Node2D = null
 
 func _ready():
 	print("DEBUG: Cinematic script initialized.")
 	
-	rothbart_scene = load("res://dialogicchar/rothbart.tscn")  # Update the actual path
-	print("DEBUG: Rothbart scene loaded manually.")
+	rothbart_scene = load("res://dialogicchar/rothbart.tscn")  # Load Rothbart
+	swan_princess_scene = load("res://dialogicchar/swanprincess.tscn")  # Load Swan Princess
 	
-	print("DEBUG: rothbart_scene is", rothbart_scene)
-	
-	var roth_point = get_node_or_null("rspawn")
-	if roth_point:
-		print("DEBUG: Rothbart spawn marker found:", roth_point)
-	else:
-		print("ERROR: Rothbart spawn marker not found! Check the scene hierarchy.")
-
-	# Test manually spawning Rothbart
-	if roth_point:
-		var rothbart = rothbart_scene.instantiate()
-		rothbart.position = roth_point.global_position
-		get_parent().add_child(rothbart)
-		print("DEBUG: Manually spawned Rothbart at", roth_point.global_position)
-	else:
-		print("ERROR: Failed to spawn Rothbart due to missing spawn marker")
+	Dialogic.signal_event.connect(_on_dialogic_event)  # Listen for `[end_timeline]`
 
 func _process(delta: float) -> void:
 	if player_in_chat_zone and not is_chatting and not dialogue_played:
@@ -41,30 +29,33 @@ func _process(delta: float) -> void:
 func run_dialogue(dialogue_string):
 	is_chatting = true
 	dialogue_played = true
-	spawn_characters()  # Spawn NPCs before starting the cutscene
+	spawn_characters()  
 	Dialogic.start(dialogue_string)
 	print("DEBUG: Started dialogue and spawned characters.")
 
 func spawn_characters():
-	var swan_point = get_node_or_null("spawn_marker")
+	var swan_point = get_node_or_null("spawn")
 	var roth_point = get_node_or_null("rspawn")
-	print("DEBUG: Rothbart spawn marker is", roth_point)
 
 	if swan_point:
-		var swan_princess = swan_princess_scene.instantiate()
+		swan_princess = swan_princess_scene.instantiate()
 		swan_princess.position = swan_point.global_position
 		get_parent().add_child(swan_princess)
 		print("DEBUG: Spawned Swan Princess at", swan_point.global_position)
-	else:
-		print("ERROR: Swan Princess spawn marker not found!")
 
 	if roth_point:
-		var rothbart = rothbart_scene.instantiate()
+		rothbart = rothbart_scene.instantiate()
 		rothbart.position = roth_point.global_position
 		get_parent().add_child(rothbart)
 		print("DEBUG: Spawned Rothbart at", roth_point.global_position)
-	else:
-		print("ERROR: Rothbart spawn marker not found!")
+
+func _on_dialogic_event(event_name: String, _args):
+	print("DEBUG: Dialogic Event ->", event_name)  # Debug event trigger
+
+	if event_name == "end_timeline":
+		print("DEBUG: Dialogue ended, scheduling removal of characters.")
+		await get_tree().create_timer(0.2).timeout  # Small delay to ensure proper removal
+		remove_characters()
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == "Player" and not dialogue_played:
@@ -77,3 +68,21 @@ func _on_body_exited(body: Node2D) -> void:
 		player_in_chat_zone = false
 		player = null
 		print("DEBUG: Player exited chat zone.")
+		remove_characters()  # Remove spawned characters when the player exits
+
+func remove_characters():
+	if swan_princess:
+		print("DEBUG: Removing Swan Princess ->", swan_princess.name)
+		swan_princess.queue_free()
+		swan_princess = null
+	else:
+		print("WARNING: Swan Princess was already removed or null.")
+
+	if rothbart:
+		print("DEBUG: Removing Rothbart ->", rothbart.name)
+		rothbart.queue_free()
+		rothbart = null
+	else:
+		print("WARNING: Rothbart was already removed or null.")
+
+	is_chatting = false

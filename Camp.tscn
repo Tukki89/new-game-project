@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://dcmcfnvw2xbh1"]
+[gd_scene load_steps=25 format=4 uid="uid://dcmcfnvw2xbh1"]
 
 [ext_resource type="Script" path="res://script/level script/camp.gd" id="1_f4pp4"]
 [ext_resource type="Texture2D" uid="uid://bgtvol82oifdm" path="res://2d_rpg_sprites/Sprites/Player/Asset Pack 1/Grassland Tileset.png" id="1_xkln1"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://scenes/Player/Roderichs.gd" id="13_8wraw"]
 [ext_resource type="Script" path="res://DuskApproachDD.gd" id="14_kpik6"]
 [ext_resource type="AudioStream" uid="uid://c2qmuketh6ivf" path="res://music/Fey Fables.mp3" id="15_7turo"]
+[ext_resource type="PackedScene" uid="uid://b7y365xrt60m2" path="res://scenes/Level/slime.tscn" id="16_g2n55"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_px84d"]
 texture = ExtResource("1_xkln1")
@@ -2220,6 +2221,21 @@ shape = SubResource("RectangleShape2D_3mnqb")
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("15_7turo")
 autoplay = true
+
+[node name="slime" parent="." instance=ExtResource("16_g2n55")]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(359, -204)
+
+[node name="slime2" parent="." instance=ExtResource("16_g2n55")]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(473, -145)
+
+[node name="slime3" parent="." instance=ExtResource("16_g2n55")]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(316, -101)
 
 [connection signal="body_entered" from="Exit_Dialogue_Detector" to="Exit_Dialogue_Detector" method="_on_body_entered"]
 [connection signal="body_exited" from="Exit_Dialogue_Detector" to="Exit_Dialogue_Detector" method="_on_body_exited"]

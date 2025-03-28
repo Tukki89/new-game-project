@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=4 uid="uid://ppmp14wuufys"]
+[gd_scene load_steps=14 format=4 uid="uid://ppmp14wuufys"]
 
 [ext_resource type="Script" path="res://duskwither_hollow.gd" id="1_pagbn"]
 [ext_resource type="Texture2D" uid="uid://bgtvol82oifdm" path="res://2d_rpg_sprites/Sprites/Player/Asset Pack 1/Grassland Tileset.png" id="2_3k4w1"]
 [ext_resource type="PackedScene" uid="uid://g03doaop14li" path="res://dusktocampportal.tscn" id="3_uxt7b"]
 [ext_resource type="PackedScene" uid="uid://brin0gve4qj2j" path="res://scenes/Player/player.tscn" id="4_yfrcu"]
 [ext_resource type="PackedScene" uid="uid://8n056yf0dhgh" path="res://dh_ef.tscn" id="5_eq6ks"]
+[ext_resource type="AudioStream" uid="uid://dkpmg654hsv8b" path="res://music/7. Mystic Grove.mp3" id="6_gu2u0"]
 [ext_resource type="PackedScene" uid="uid://b7y365xrt60m2" path="res://scenes/Level/slime.tscn" id="6_qmfus"]
 [ext_resource type="Script" path="res://duskfight.gd" id="7_52o58"]
 
@@ -1100,6 +1101,9 @@ position = Vector2(2131, -1915)
 rotation = 1.54482
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_gu2u0")
+volume_db = 0.5
+autoplay = true
 
 [node name="slime" parent="." instance=ExtResource("6_qmfus")]
 z_index = 1
@@ -1140,6 +1144,26 @@ z_index = 1
 y_sort_enabled = true
 position = Vector2(107, 416)
 shape = SubResource("RectangleShape2D_hqggb")
+
+[node name="slime7" parent="." instance=ExtResource("6_qmfus")]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(470, 122)
+
+[node name="slime8" parent="." instance=ExtResource("6_qmfus")]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(697, 232)
+
+[node name="slime9" parent="." instance=ExtResource("6_qmfus")]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(710, 402)
+
+[node name="slime10" parent="." instance=ExtResource("6_qmfus")]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(746, 540)
 
 [connection signal="child_entered_tree" from="Exit_Dialogue_Detector/CollisionShape2D" to="Exit_Dialogue_Detector" method="_on_collision_shape_2d_child_entered_tree"]
 [connection signal="child_exiting_tree" from="Exit_Dialogue_Detector/CollisionShape2D" to="Exit_Dialogue_Detector" method="_on_collision_shape_2d_child_exiting_tree"]
