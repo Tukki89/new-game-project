@@ -1145,5 +1145,25 @@ y_sort_enabled = true
 position = Vector2(107, 416)
 shape = SubResource("RectangleShape2D_hqggb")
 
+[node name="slime7" parent="." instance=ExtResource("6_qmfus")]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(470, 122)
+
+[node name="slime8" parent="." instance=ExtResource("6_qmfus")]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(697, 232)
+
+[node name="slime9" parent="." instance=ExtResource("6_qmfus")]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(710, 402)
+
+[node name="slime10" parent="." instance=ExtResource("6_qmfus")]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(746, 540)
+
 [connection signal="child_entered_tree" from="Exit_Dialogue_Detector/CollisionShape2D" to="Exit_Dialogue_Detector" method="_on_collision_shape_2d_child_entered_tree"]
 [connection signal="child_exiting_tree" from="Exit_Dialogue_Detector/CollisionShape2D" to="Exit_Dialogue_Detector" method="_on_collision_shape_2d_child_exiting_tree"]

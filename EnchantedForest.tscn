@@ -1065,7 +1065,7 @@ position = Vector2(76, 435)
 position = Vector2(724, 15)
 
 [node name="slime" parent="." instance=ExtResource("7_ebo3m")]
-position = Vector2(716, 403)
+position = Vector2(692, 403)
 
 [node name="Blue_Slime" parent="." instance=ExtResource("8_08bij")]
 position = Vector2(556, 539)
@@ -1103,6 +1103,27 @@ debug_color = Color(0.89253, 0.000233723, 0.786947, 0.42)
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("14_1a6df")
 autoplay = true
+
+[node name="slime2" parent="." instance=ExtResource("7_ebo3m")]
+position = Vector2(572, 395)
+
+[node name="slime3" parent="." instance=ExtResource("7_ebo3m")]
+position = Vector2(340, 243)
+
+[node name="slime4" parent="." instance=ExtResource("7_ebo3m")]
+position = Vector2(388, 411)
+
+[node name="Blue_Slime2" parent="." instance=ExtResource("8_08bij")]
+position = Vector2(484, 499)
+
+[node name="Blue_Slime3" parent="." instance=ExtResource("8_08bij")]
+position = Vector2(228, 299)
+
+[node name="Blue_Slime4" parent="." instance=ExtResource("8_08bij")]
+position = Vector2(316, 539)
+
+[node name="Blue_Slime5" parent="." instance=ExtResource("8_08bij")]
+position = Vector2(236, 411)
 
 [connection signal="body_entered" from="EnchantedEntranceDll" to="EnchantedEntranceDll" method="_on_body_entered"]
 

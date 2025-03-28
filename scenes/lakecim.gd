@@ -22,8 +22,6 @@ func _ready():
 	
 	Dialogic.signal_event.connect(_on_dialogic_event)  # Listen for `[end_timeline]`
 
-	
-
 func _process(delta: float) -> void:
 	if player_in_chat_zone and not is_chatting and not dialogue_played:
 		run_dialogue(dialog_id)
@@ -57,23 +55,7 @@ func _on_dialogic_event(event_name: String, _args):
 	if event_name == "end_timeline":
 		print("DEBUG: Dialogue ended, scheduling removal of characters.")
 		await get_tree().create_timer(0.2).timeout  # Small delay to ensure proper removal
-
-		if swan_princess:
-			print("DEBUG: Removing Swan Princess ->", swan_princess.name)
-			swan_princess.queue_free()
-			swan_princess = null
-		else:
-			print("WARNING: Swan Princess was already removed or null.")
-
-		if rothbart:
-			print("DEBUG: Removing Rothbart ->", rothbart.name)
-			swan_princess.get_parent().remove_child(swan_princess)  # Forceful removal
-			rothbart.queue_free()
-			rothbart = null
-		else:
-			print("WARNING: Rothbart was already removed or null.")
-
-		is_chatting = false
+		remove_characters()
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == "Player" and not dialogue_played:
@@ -86,3 +68,21 @@ func _on_body_exited(body: Node2D) -> void:
 		player_in_chat_zone = false
 		player = null
 		print("DEBUG: Player exited chat zone.")
+		remove_characters()  # Remove spawned characters when the player exits
+
+func remove_characters():
+	if swan_princess:
+		print("DEBUG: Removing Swan Princess ->", swan_princess.name)
+		swan_princess.queue_free()
+		swan_princess = null
+	else:
+		print("WARNING: Swan Princess was already removed or null.")
+
+	if rothbart:
+		print("DEBUG: Removing Rothbart ->", rothbart.name)
+		rothbart.queue_free()
+		rothbart = null
+	else:
+		print("WARNING: Rothbart was already removed or null.")
+
+	is_chatting = false

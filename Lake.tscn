@@ -2938,7 +2938,7 @@ sources/0 = SubResource("TileSetAtlasSource_e0yge")
 size = Vector2(20, 289.996)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b5ari"]
-size = Vector2(20, 249.015)
+size = Vector2(24.999, 249.015)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pwpl5"]
 radius = 30.0666
@@ -3027,7 +3027,7 @@ position = Vector2(11, 98)
 script = ExtResource("7_kl3d6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Cinematic"]
-position = Vector2(192, 466)
+position = Vector2(191.971, 463.501)
 rotation = 1.55916
 shape = SubResource("RectangleShape2D_b5ari")
 
@@ -3071,6 +3071,7 @@ autoplay = true
 
 [connection signal="body_entered" from="Lake_to_EF" to="Lake_to_EF" method="_on_body_entered"]
 [connection signal="body_entered" from="Cinematic" to="Cinematic" method="_on_body_entered"]
+[connection signal="body_exited" from="Cinematic" to="Cinematic" method="_on_body_exited"]
 [connection signal="child_entered_tree" from="Cinematic/CollisionShape2D" to="Cinematic" method="_on_collision_shape_2d_child_entered_tree"]
 [connection signal="body_entered" from="swanprincess/Detector" to="swanprincess" method="_on_detector_body_entered"]
 [connection signal="body_exited" from="swanprincess/Detector" to="swanprincess" method="_on_detector_body_exited"]
