@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dp3tesgvvwtfq"]
+
+[ext_resource type="Script" path="res://testscene.gd" id="1_r8g04"]
+[ext_resource type="VideoStream" path="res://music/lake_cutscene.ogv" id="1_r12eg"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+script = ExtResource("1_r8g04")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+layout_mode = 0
+offset_right = 1272.0
+offset_bottom = 720.0
+stream = ExtResource("1_r12eg")
+autoplay = true
+expand = true

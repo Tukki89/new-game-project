@@ -26,9 +26,11 @@ directories/dch_directory={
 "Gallard": "res://dialogicchar/Gallard.dch",
 "King": "res://dialogicchar/King.dch",
 "Mikhal": "res://Mikhal.dch",
+"Odette": "res://Odette.dch",
 "Prince": "res://dialogicchar/Siegfried.dch",
 "Siegfried": "res://Siegfried.dch",
 "Sir Waldheim": "res://Sir Waldheim.dch",
+"Swan Spirit": "res://Swan Spirit.dch",
 "Syestem": "res://Syestem.dch",
 "Thiery": "res://Thiery.dch",
 "character": "res://character.dch"
@@ -45,6 +47,8 @@ directories/dtl_directory={
 "RoderichSay": "res://RoderichSay.dtl",
 "Russel_Camp": "res://Russel_Camp.dtl",
 "SiegCamp": "res://SiegCamp.dtl",
+"SwanSpirit": "res://SwanSpirit.dtl",
+"Swanlouge": "res://Swanlouge.dtl",
 "Whisperers": "res://Whisperers.dtl",
 "[Scene Outside the Castle Gates]": "res://[Scene Outside the Castle Gates].dtl",
 "brunhilde": "res://brunhilde.dtl"

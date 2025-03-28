@@ -23,11 +23,15 @@ func _ready():
 	start_pos = position
 	$AnimatedSprite2D.play("idle")  # Ensure idle animation starts
 
-func _process(delta):
-	if player_in_chat_zone and Input.is_action_just_pressed("chat"):
-		run_dialogue("brunhilde")
+	# You can connect signals directly through the Editor instead of doing it in code
 
-	# King should always be in idle animation
+func _process(delta):
+	# Check if player is in chat zone and initiates chat
+	if player_in_chat_zone and Input.is_action_just_pressed("chat"):
+		if not is_chatting:
+			run_dialogue("Whisperers")  # Trigger the dialogue when chat is pressed
+
+	# Always play idle animation
 	$AnimatedSprite2D.play("idle")
 
 	if is_roaming:
@@ -40,11 +44,12 @@ func _process(delta):
 			MOVE:
 				move(delta)
 
+	# If the player presses 'e', start chatting with NPC
 	if Input.is_action_just_pressed("e"):
 		print("DEBUG: Chatting with NPC")
 		is_roaming = false
 		is_chatting = true
-		$AnimatedSprite2D.play("idle")            
+		$AnimatedSprite2D.play("idle")
 
 func run_dialogue(dialogue_string):
 	is_chatting = true  
@@ -56,25 +61,26 @@ func choose(array):
 	return array.front()
 
 func move(_delta): 
-	if !is_chatting:
+	if not is_chatting:
 		velocity = dir * SPEED
 		move_and_slide()
 
-# --- DETECTION SYSTEM ---
-func _on_chat_detection_area_body_entered(body: Node2D) -> void:
-	print("DEBUG: Something entered chat detection area:", body.name)
-	if body.name == "Player":
+# --- DETECTION SYSTEM --- 
+# Detect when player enters the chat zone
+func _on_chat_area_detection_body_entered(body: Node2D) -> void:
+	if body.name == "Player":  # Make sure it's the player
 		player = body
 		player_in_chat_zone = true
-		print("DEBUG: Player detected!")
+		print("DEBUG: Player entered chat zone.")
 
-func _on_chat_detection_area_body_exited(body: Node2D) -> void:
-	print("DEBUG: Something exited chat detection area:", body.name)
-	if body.name == "Player":
+# Detect when player exits the chat zone
+func _on_chat_area_detection_body_exited(body: Node2D) -> void:
+	if body.name == "Player":  # Make sure it's the player
 		player_in_chat_zone = false
 		player = null
-		print("DEBUG: Player left chat zone.")
+		print("DEBUG: Player exited chat zone.")
 
+# Timer logic to change states periodically
 func _on_timer_timeout() -> void:
 	$Timer.wait_time = choose([0.5, 1, 1.5])
 	current_state = choose([IDLE, NEW_DIR, MOVE])

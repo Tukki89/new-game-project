@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://di1y673h66wye"]
+[gd_scene load_steps=22 format=4 uid="uid://di1y673h66wye"]
 
 [ext_resource type="Texture2D" uid="uid://drjyd5iqpjsu5" path="res://2d_rpg_sprites/Sprites/Player/Asset Pack 2/Asset Pack 3/Poison Forest.png" id="1_ckg7a"]
 [ext_resource type="Texture2D" uid="uid://4nd4yl6m7cva" path="res://2d_rpg_sprites/Sprites/Player/Asset Pack 2/Asset Pack 3/poison tree wall.png" id="2_c17yc"]
@@ -10,9 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://b8cdxr0pu8iec" path="res://scenes/Interactables/blue_slime.tscn" id="8_08bij"]
 [ext_resource type="PackedScene" uid="uid://cwm6qvwd5gqn2" path="res://scenes/Level/cat.tscn" id="10_oyrfn"]
 [ext_resource type="PackedScene" uid="uid://btls2wdxuwr6" path="res://scenes/Level/treant.tscn" id="11_wf4gx"]
-[ext_resource type="PackedScene" uid="uid://b03luxi5mt7vg" path="res://scenes/Level/yellow_slime.tscn" id="12_ljv8o"]
 [ext_resource type="Script" path="res://dialogicchar/enchanted_entrance_dll.gd" id="13_1j606"]
 [ext_resource type="PackedScene" uid="uid://ee5et3b4hujd" path="res://swan.tscn" id="13_2cp4e"]
+[ext_resource type="AudioStream" uid="uid://bknyii8q8peto" path="res://music/5. Emberlight.mp3" id="14_1a6df"]
+[ext_resource type="Script" path="res://dialogicchar/MysticSwan.gd" id="14_mtjib"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0ngmu"]
 texture = ExtResource("1_ckg7a")
@@ -983,6 +984,9 @@ sources/0 = SubResource("TileSetAtlasSource_0ngmu")
 sources/1 = SubResource("TileSetAtlasSource_yc8qm")
 sources/2 = SubResource("TileSetAtlasSource_mi50e")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4jcab"]
+size = Vector2(20, 344)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_qvfx8"]
 radius = 24.0
 
@@ -1055,7 +1059,7 @@ position = Vector2(38, 427)
 rotation = 1.57649
 
 [node name="Player" parent="." instance=ExtResource("4_ecd66")]
-position = Vector2(108, 435)
+position = Vector2(76, 435)
 
 [node name="EFtoLK" parent="." instance=ExtResource("6_mn44e")]
 position = Vector2(724, 15)
@@ -1072,25 +1076,33 @@ position = Vector2(628, 299)
 [node name="Treant" parent="." instance=ExtResource("11_wf4gx")]
 position = Vector2(884, 259)
 
-[node name="yellow_slime" parent="." instance=ExtResource("12_ljv8o")]
-position = Vector2(532, 339)
-
 [node name="EnchantedEntranceDll" type="Area2D" parent="."]
+position = Vector2(44, 67)
 script = ExtResource("13_1j606")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnchantedEntranceDll"]
+position = Vector2(88, 328)
+shape = SubResource("RectangleShape2D_4jcab")
 
 [node name="MysthicSwan" parent="." instance=ExtResource("13_2cp4e")]
 position = Vector2(724, 51)
-script = null
+collision_layer = 64
+script = ExtResource("14_mtjib")
 
 [node name="CollisionShape2D" parent="MysthicSwan" index="1"]
 shape = SubResource("CircleShape2D_qvfx8")
+
+[node name="detector" parent="MysthicSwan" index="2"]
+collision_layer = 64
 
 [node name="CollisionShape2D" parent="MysthicSwan/detector" index="0"]
 position = Vector2(0, 24)
 shape = SubResource("CircleShape2D_t56yd")
 debug_color = Color(0.89253, 0.000233723, 0.786947, 0.42)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_1a6df")
+autoplay = true
 
 [connection signal="body_entered" from="EnchantedEntranceDll" to="EnchantedEntranceDll" method="_on_body_entered"]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://bwr35pd05r0be"]
+[gd_scene load_steps=30 format=4 uid="uid://bwr35pd05r0be"]
 
 [ext_resource type="Texture2D" uid="uid://bgtvol82oifdm" path="res://2d_rpg_sprites/Sprites/Player/Asset Pack 1/Grassland Tileset.png" id="1_ewnly"]
 [ext_resource type="Texture2D" uid="uid://g04lndr0hm27" path="res://2d_rpg_sprites/Sprites/Player/Asset Pack 2/Swamp Tileset.png" id="2_tmfyu"]
@@ -7,6 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://brin0gve4qj2j" path="res://scenes/Player/player.tscn" id="5_mpbfo"]
 [ext_resource type="Script" path="res://lake_to_ef.gd" id="6_hlyol"]
 [ext_resource type="Script" path="res://scenes/lakecim.gd" id="7_kl3d6"]
+[ext_resource type="PackedScene" uid="uid://bw7whsub26b1n" path="res://dialogicchar/swanprincess.tscn" id="8_7h0k5"]
+[ext_resource type="Script" path="res://dialogicchar/swandll.gd" id="9_ael3b"]
+[ext_resource type="PackedScene" uid="uid://b7y365xrt60m2" path="res://scenes/Level/slime.tscn" id="10_2y3pu"]
+[ext_resource type="AudioStream" uid="uid://1avvro6hfdn3" path="res://music/1. Moonspire.mp3" id="11_3s4f3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oin6d"]
 texture = ExtResource("1_ewnly")
@@ -2936,10 +2940,13 @@ size = Vector2(20, 289.996)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b5ari"]
 size = Vector2(20, 249.015)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_pwpl5"]
+radius = 30.0666
+
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("5_mpbfo")]
-position = Vector2(164, 510)
+position = Vector2(158, 575)
 
 [node name="TileMap" type="TileMap" parent="."]
 z_index = -1
@@ -3012,31 +3019,60 @@ rotation = -1.57612
 script = ExtResource("6_hlyol")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Lake_to_EF"]
-position = Vector2(-2.09044, 16.9891)
+position = Vector2(-3.07452, 13.9838)
 shape = SubResource("RectangleShape2D_aikfr")
 
 [node name="Cinematic" type="Area2D" parent="."]
+position = Vector2(11, 98)
 script = ExtResource("7_kl3d6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Cinematic"]
-position = Vector2(192.507, 567.006)
+position = Vector2(192, 466)
 rotation = 1.55916
 shape = SubResource("RectangleShape2D_b5ari")
 
 [node name="rspawn" type="Marker2D" parent="Cinematic"]
-position = Vector2(108, 476)
+position = Vector2(133, 371)
 
 [node name="spawn" type="Marker2D" parent="Cinematic"]
-position = Vector2(273, 504)
+position = Vector2(191, 364)
 
 [node name="slspawn" type="Marker2D" parent="Cinematic"]
+position = Vector2(18, -11)
 
 [node name="slspawn2" type="Marker2D" parent="Cinematic"]
-position = Vector2(192.507, 567.006)
+position = Vector2(240, 403)
 rotation = 1.55916
 
 [node name="slspawn3" type="Marker2D" parent="Cinematic"]
 
+[node name="swanprincess" parent="." instance=ExtResource("8_7h0k5")]
+position = Vector2(82, 208)
+script = ExtResource("9_ael3b")
+
+[node name="Detector" type="Area2D" parent="swanprincess"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="swanprincess/Detector"]
+shape = SubResource("CircleShape2D_pwpl5")
+debug_color = Color(0.896643, 0.000197721, 0.774466, 0.42)
+
+[node name="slime2" parent="." instance=ExtResource("10_2y3pu")]
+position = Vector2(305, 487)
+
+[node name="slime" parent="." instance=ExtResource("10_2y3pu")]
+position = Vector2(322, 540)
+
+[node name="slime3" parent="." instance=ExtResource("10_2y3pu")]
+position = Vector2(347, 501)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_3s4f3")
+autoplay = true
+
 [connection signal="body_entered" from="Lake_to_EF" to="Lake_to_EF" method="_on_body_entered"]
 [connection signal="body_entered" from="Cinematic" to="Cinematic" method="_on_body_entered"]
 [connection signal="child_entered_tree" from="Cinematic/CollisionShape2D" to="Cinematic" method="_on_collision_shape_2d_child_entered_tree"]
+[connection signal="body_entered" from="swanprincess/Detector" to="swanprincess" method="_on_detector_body_entered"]
+[connection signal="body_exited" from="swanprincess/Detector" to="swanprincess" method="_on_detector_body_exited"]
+
+[editable path="swanprincess"]
