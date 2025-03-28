@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cc7rj7sth7iqp" path="res://2d_rpg_sprites/Sprites/Player/Elite Swordsman Sprite Sheet.png" id="2_dvrgt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1gj4n"]
-radius = 4.12311
+radius = 5.0
 
 [sub_resource type="Animation" id="Animation_rglm6"]
 length = 0.001
@@ -591,7 +591,7 @@ states/Sword/position = Vector2(538, 202)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_qr2ne"), "Idle", "Move", SubResource("AnimationNodeStateMachineTransition_kqboq"), "Move", "Idle", SubResource("AnimationNodeStateMachineTransition_mbtc1"), "Idle", "Sword", SubResource("AnimationNodeStateMachineTransition_ky70d"), "Sword", "Idle", SubResource("AnimationNodeStateMachineTransition_724ob"), "Sword", "Move", SubResource("AnimationNodeStateMachineTransition_hye8b"), "Move", "Sword", SubResource("AnimationNodeStateMachineTransition_by5ec")]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_stfyk"]
-size = Vector2(20, 33)
+size = Vector2(28, 39.75)
 
 [node name="Player" type="CharacterBody2D"]
 y_sort_enabled = true
@@ -599,14 +599,15 @@ collision_mask = 21
 script = ExtResource("1_n7ypk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, 3)
+position = Vector2(-10, -8)
+scale = Vector2(1.19792, 1.25)
 texture = ExtResource("2_dvrgt")
 offset = Vector2(8, 0)
 hframes = 8
 vframes = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(8, 16)
+position = Vector2(0, 9)
 shape = SubResource("CircleShape2D_1gj4n")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -629,7 +630,7 @@ collision_layer = 2
 collision_mask = 12
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="sword"]
-position = Vector2(32, -1)
+position = Vector2(28, -14)
 shape = SubResource("RectangleShape2D_stfyk")
 disabled = true
 debug_color = Color(0.881884, 0.114646, 0.767301, 0.42)
