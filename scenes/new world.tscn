@@ -2080,6 +2080,6 @@ position = Vector2(11, 0)
 
 [node name="Player" parent="." instance=ExtResource("15_ok6nd")]
 z_index = 1
-position = Vector2(316, 136)
+position = Vector2(316, 18)
 
 [editable path="Interior_Exit"]
