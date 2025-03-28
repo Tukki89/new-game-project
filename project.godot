@@ -28,6 +28,7 @@ directories/dch_directory={
 "Mikhal": "res://Mikhal.dch",
 "Odette": "res://Odette.dch",
 "Prince": "res://dialogicchar/Siegfried.dch",
+"Rothbart": "res://Rothbart.dch",
 "Siegfried": "res://Siegfried.dch",
 "Sir Waldheim": "res://Sir Waldheim.dch",
 "Swan Spirit": "res://Swan Spirit.dch",
@@ -36,6 +37,7 @@ directories/dch_directory={
 "character": "res://character.dch"
 }
 directories/dtl_directory={
+"Confrontation": "res://Confrontation.dtl",
 "DuskApproach": "res://DuskApproach.dtl",
 "DuskApproach2": "res://DuskApproach2.dtl",
 "EnchantedEntrance": "res://EnchantedEntrance.dtl",
