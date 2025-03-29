@@ -3050,6 +3050,9 @@ rotation = 1.55916
 position = Vector2(82, 208)
 script = ExtResource("9_ael3b")
 
+[node name="CollisionShape2D" parent="swanprincess" index="1"]
+visible = false
+
 [node name="Detector" type="Area2D" parent="swanprincess"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="swanprincess/Detector"]

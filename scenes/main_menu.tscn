@@ -1,12 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://e3bjdtkfxkqh"]
+[gd_scene load_steps=6 format=3 uid="uid://e3bjdtkfxkqh"]
 
 [ext_resource type="Script" path="res://scripts/Main Menu.gd" id="1_sil8m"]
+[ext_resource type="Texture2D" uid="uid://cl1ny7s8p4501" path="res://arts/main menu pic.jpg" id="3_8t8rs"]
 [ext_resource type="AudioStream" uid="uid://3slhcly6gr5k" path="res://music/Tchaikovsky  Swan Lake.mp3" id="3_dpa65"]
-[ext_resource type="VideoStream" path="res://arts/main-menu-video.ogv" id="3_kyr6u"]
 
 [sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_1wfsu"]
 stream_count = 1
 stream_0 = ExtResource("3_dpa65")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gnadx"]
+texture = ExtResource("3_8t8rs")
 
 [node name="Main Menu" type="Control"]
 layout_mode = 3
@@ -23,17 +26,14 @@ position = Vector2(498, 383)
 stream = SubResource("AudioStreamPlaylist_1wfsu")
 autoplay = true
 
-[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+[node name="Panel" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-stream = ExtResource("3_kyr6u")
-autoplay = true
-expand = true
-loop = true
+theme_override_styles/panel = SubResource("StyleBoxTexture_gnadx")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -44,7 +44,7 @@ anchor_bottom = 0.5
 offset_left = 2.0
 offset_top = 110.0
 offset_right = 2.0
-offset_bottom = 211.0
+offset_bottom = 182.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -53,12 +53,9 @@ layout_mode = 2
 size_flags_horizontal = 4
 
 [node name="Start Game" type="Button" parent="MarginContainer/VBoxContainer"]
+clip_contents = true
 layout_mode = 2
 text = "Start Game"
-
-[node name="Options" type="Button" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Options"
 
 [node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -66,5 +63,4 @@ text = "Quit
 "
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Start Game" to="." method="_on_start_game_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

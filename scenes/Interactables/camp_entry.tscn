@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bgtvol82oifdm" path="res://2d_rpg_sprites/Sprites/Player/Asset Pack 1/Grassland Tileset.png" id="2_2186q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_36pg2"]
-size = Vector2(112, 35)
+size = Vector2(561, 35)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dhl8l"]
 
@@ -19,7 +19,8 @@ region_enabled = true
 region_rect = Rect2(364.603, 134.193, 87.9038, 31.6145)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 0.5)
+position = Vector2(-102.5, 0.5)
+scale = Vector2(1.0198, 1)
 shape = SubResource("RectangleShape2D_36pg2")
 
 [node name="checkpoint" type="Area2D" parent="."]
